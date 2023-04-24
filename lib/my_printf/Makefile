@@ -5,54 +5,47 @@
 ## makefile printf
 ##
 
-SRC =	src/conversion/flag_b.c	\
-		src/conversion/flag_o.c	\
-		src/conversion/flag_x.c	\
-		src/conversion/flag_upx.c	\
-		src/param/param_minus_plus.c		\
-		src/numbers/flag_f.c	\
-		src/numbers/flag_i_d.c	\
-		src/numbers/flags_e.c	\
-		src/numbers/flag_upe.c	\
-		src/numbers/flags_u.c	\
-		src/str/flag_c.c		\
-		src/str/flag_mod.c		\
-		src/str/flag_s.c		\
-		src/str/flag_ups.c		\
-		src/others/flag_n.c		\
-		src/others/flag_p.c		\
-		src/base/my_compute_power_rec.c	\
-		src/base/my_printf.c	\
-		src/base/my_put_nbr_base.c	\
-		src/base/my_put_nbr.c	\
-		src/base/my_put_unsigned_base.c	\
-		src/base/my_put_unsigned_nbr.c	\
-		src/base/my_count_nbr_base.c	\
-		src/base/my_putchar.c	\
-		src/base/my_putfloat.c	\
-		src/base/my_putstr_non_print.c	\
-		src/base/my_putstr.c	\
-		src/base/my_revstr.c	\
-		src/base/my_scinbr.c	\
-		src/base/my_strlen.c	\
-		src/base/cut_string.c	\
-		src/base/scan_params.c	\
-		src/base/my_getnbr.c	\
-		src/base/my_get_nbr_aft_point.c \
-		src/base/my_put_nbr_pres.c	\
-		src/base/my_puttab.c	\
-		src/str/flag_t.c	\
-		src/str/my_error_flag.c
+SRC =	src_printf/conversion/flag_b.c	\
+		src_printf/conversion/flag_o.c	\
+		src_printf/conversion/flag_x.c	\
+		src_printf/conversion/flag_upx.c	\
+		src_printf/param/param_minus_plus.c		\
+		src_printf/numbers/flag_f.c	\
+		src_printf/numbers/flag_i_d.c	\
+		src_printf/numbers/flags_e.c	\
+		src_printf/numbers/flag_upe.c	\
+		src_printf/numbers/flags_u.c	\
+		src_printf/str/flag_c.c		\
+		src_printf/str/flag_mod.c		\
+		src_printf/str/flag_s.c		\
+		src_printf/str/flag_ups.c		\
+		src_printf/others/flag_n.c		\
+		src_printf/others/flag_p.c		\
+		src_printf/base/my_compute_power_rec.c	\
+		src_printf/base/my_printf.c	\
+		src_printf/base/my_put_nbr_base.c	\
+		src_printf/base/my_put_nbr.c	\
+		src_printf/base/my_put_unsigned_base.c	\
+		src_printf/base/my_put_unsigned_nbr.c	\
+		src_printf/base/my_count_nbr_base.c	\
+		src_printf/base/my_putchar.c	\
+		src_printf/base/my_putfloat.c	\
+		src_printf/base/my_putstr_non_print.c	\
+		src_printf/base/my_putstr.c	\
+		src_printf/base/my_revstr.c	\
+		src_printf/base/my_scinbr.c	\
+		src_printf/base/my_strlen.c	\
+		src_printf/base/cut_string.c	\
+		src_printf/base/scan_params.c	\
+		src_printf/base/my_getnbr.c	\
+		src_printf/base/my_get_nbr_aft_point.c \
+		src_printf/base/my_put_nbr_pres.c	\
+		src_printf/base/my_puttab.c	\
+		src_printf/str/flag_t.c	\
+		src_printf/str/my_error_flag.c
 
 
-BUILD_DIR = build/
-
-BLUE = \033[1;34m
-
-$(BUILD_DIR)%.o: %.c
-	@mkdir -p $(@D)
-	#@echo "  CC       $<      $@"
-	@$(CC) $(CFLAGS) -c $< -o $@
+BUILD_DIR = ../../.trash/
 
 OBJ = $(SRC:%.c=$(BUILD_DIR)%.o)
 
@@ -65,21 +58,46 @@ endif
 
 NAME = libprint.a
 
+TMP_FILES	=	*.gcno					\
+				*.gcda					\
+				vgcore.*				\
+				*.log					\
+				-r $(BUILD_DIR)			\
+				$(LIB_OBJ)
+
+DIE = exit 1
+
+# ------ DISPLAY -------- #
+ECHO 		= echo
+C_RESET 	= \033[00m
+C_RED		= \e[31m
+C_GREEN 	= \e[32m
+C_YELLOW 	= \e[33m
+C_PINK		= \e[35m
+C_BLUE		= \e[36m
+C_FULL_RED	= \e[41m
+# ----------------------- #
+
 all: $(NAME)
+
+%.c:
+	@ $(ECHO) "$(C_RED)[MY_PRINTF] -> $@$(C_RESET)"
+	@ $(DIE)
+
+$(BUILD_DIR)%.o: %.c
+	@mkdir -p $(@D)
+	@ $(CC) $(CFLAGS) -c $< -o $@
+	@ $(ECHO) "$(C_GREEN)[MY_PRINTF]$(C_RESET) -> $<"
 
 $(NAME): $(OBJ)
 	@ ar rc $(NAME) $(OBJ)
 	@ mv $(NAME) ../
-	@ mkdir -p ../../include
-	@ cp include/myprintf.h ../../include
-	@ echo "$(BLUE)Compilation of libprint.a done"
+	@ mkdir -p ../include
+	@ cp include/myprintf.h ../include
+	@ $(ECHO) "$(C_GREEN)|==========> $(NAME) compiled. <==========|$(C_RESET)"
 
 clean:
-	rm -f $(OBJ)
-	rm -rf $(BUILD_DIR)
-	rm -f *~
-	rm -f \#*\#
-	rm -f vgcore.*
+	rm -f $(TMP_FILE)
 
 fclean: clean
 	rm -f ../$(NAME)

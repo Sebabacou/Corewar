@@ -55,42 +55,62 @@ SRC     =	concat_params.c	\
 		my_clean_string.c	\
 		my_count_char.c
 
-BUILD_DIR =	build/
+BUILD_DIR =	../../.trash/lib/
 
 DEBUG ?= 1
 ifeq ($(DEBUG), 1)
 	CFLAGS += -g
 endif
 
-
-$(BUILD_DIR)%.o: %.c
-	@mkdir -p $(@D)
-	#@echo "  CC       $<      $@"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 OBJ = $(SRC:%.c=$(BUILD_DIR)%.o)
-
-BLUE = \033[1;34m
-NC = \033[0m
 
 NAME    =	libmy.a
 
-all:	$(NAME)
+TMP_FILES	=	*.gcno					\
+				*.gcda					\
+				vgcore.*				\
+				*.log					\
+				-r $(BUILD_DIR)			\
+				$(LIB_OBJ)
+
+DIE = exit 1
+
+# ------ DISPLAY -------- #
+ECHO 		= echo
+C_RESET 	= \033[00m
+C_RED		= \e[31m
+C_GREEN 	= \e[32m
+C_YELLOW 	= \e[33m
+C_PINK		= \e[35m
+C_BLUE		= \e[36m
+C_FULL_RED	= \e[41m
+# ----------------------- #
+
+all: $(NAME)
+
+%.c:
+	@ $(ECHO) "$(C_RED)[LIB] -> $@$(C_RESET)"
+	@ $(DIE)
+
+$(BUILD_DIR)%.o: %.c
+	@mkdir -p $(@D)
+	@ $(CC) $(CFLAGS) -c $< -o $@
+	@ $(ECHO) "$(C_GREEN)[LIB]$(C_RESET) -> $<"
 
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
 	mv $(NAME) ../
-	mkdir -p ../../include
-	cp my.h ../../include
-	@ echo "$(BLUE)Compilation of $(NAME) done$(NC)"
+	mkdir -p ../include
+	cp my.h ../include
+	@ printf "$(C_GREEN)|============> $(NAME)"
+	@ $(ECHO) "compiled. <===========|$(C_RESET)"
 
 clean:
 	rm -rf $(BUILD_DIR)
 
 fclean: clean
 	rm -f ../$(NAME)
-	@ echo "$(RED)fclean libmy.a done$(NC)"
 
 re:	fclean all
 
-.PHONY: all clean fclean re .SILENT
+.PHONY: all clean fclean re

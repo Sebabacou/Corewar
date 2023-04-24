@@ -1,0 +1,6 @@
+*.o
+*.a
+.vscode
+coding-style-reports.log
+.xml
+.idea
