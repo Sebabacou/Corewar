@@ -5,6 +5,8 @@
 ## make files
 ##
 
+LIB = ./tools/
+
 all:
 	@ $(MAKE) -sC ./my/
 	@ $(MAKE) -sC ./my_printf/

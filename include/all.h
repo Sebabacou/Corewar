@@ -9,4 +9,5 @@
     #define _ALL_H_
     #define UNUSED __attribute__((unused))
 
+    #include "op.h"
 #endif

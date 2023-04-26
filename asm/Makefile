@@ -14,6 +14,7 @@ VPATH := src
 vpath %.c $(VPATH)
 
 SRC := main.c
+SRC += op.c
 
 BUILD_DIR	=	../.trash/asm
 
