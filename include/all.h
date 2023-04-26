@@ -12,5 +12,9 @@
     #include "op.h"
     #include "my.h"
     #include "myprintf.h"
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <sys/types.h>
 
 #endif

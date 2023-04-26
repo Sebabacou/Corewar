@@ -33,20 +33,17 @@ C_PINK		= \e[35m
 C_FULL_RED	= \e[41m
 # ----------------------- #
 
-
 %:
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
-lib:
-	@ $(MAKE) -sC ./lib/
-
-
 all: lib
 	@ $(CC) -o for_clion lib/my/main.c
-	@ mkdir -p $(BUILD_DIR)
-	@ mv for_clion $(BUILD_DIR)
+	@ rm for_clion
 	@ $(MAKE) -sC $(A_PATH)
 	@ $(MAKE) -sC $(C_PATH)
+
+lib:
+	@ $(MAKE) -sC ./lib/
 
 clean:
 	@ $(RM) $(TMP_FILES)
@@ -66,7 +63,7 @@ debug: lib
 $(A_NAME): lib
 	@ $(MAKE) -sC $(A_PATH)
 
-$(C_NAME):lib
+$(C_NAME): lib
 	@ $(MAKE) -sC $(C_PATH)
 
 a_debug: lib

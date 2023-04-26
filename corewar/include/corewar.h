@@ -10,4 +10,7 @@
 
     #include "all.h"
 
+    void display_help(void);
+
+    char *del_char(char *str, char c);
 #endif

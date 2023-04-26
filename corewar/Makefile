@@ -11,14 +11,22 @@ NAME		=	corewar
 
 VPATH := src
 VPATH += src/tools
-VPATH += display
+VPATH += src/display
 
 vpath %.c $(VPATH)
 
+#========> OTHER <=======#
 SRC := main.c
 
-#========> TOOLS <=======#
+
+#========> DISPLAY <=======#
+SRC += display_help.c
+
+
+#=========> TOOLS <========#
 SRC += op.c
+SRC += del_char.c
+
 
 BUILD_DIR	=	../.trash/corewar
 
