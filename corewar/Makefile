@@ -10,17 +10,21 @@ CC 			= 	gcc
 NAME		=	corewar
 
 VPATH := src
+VPATH += src/tools
+VPATH += display
 
 vpath %.c $(VPATH)
 
 SRC := main.c
+
+#========> TOOLS <=======#
 SRC += op.c
 
 BUILD_DIR	=	../.trash/corewar
 
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
-LIB_FLAGS	=	-L./../lib/ -lmy
+LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 CFLAGS		=	-Wall -Wextra -I./include/ -I./../include/ -I./../lib/include/
 
 TMP_FILES	=	*.gcno					\

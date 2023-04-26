@@ -37,11 +37,14 @@ C_FULL_RED	= \e[41m
 %:
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
-all:
+lib:
+	@ $(MAKE) -sC ./lib/
+
+
+all: lib
 	@ $(CC) -o for_clion lib/my/main.c
 	@ mkdir -p $(BUILD_DIR)
 	@ mv for_clion $(BUILD_DIR)
-	@ $(MAKE) -sC ./lib/
 	@ $(MAKE) -sC $(A_PATH)
 	@ $(MAKE) -sC $(C_PATH)
 
@@ -56,29 +59,24 @@ fclean:		clean
 
 re:		fclean all
 
-debug:
-	@ $(MAKE) -sC ./lib/
+debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
 	@ $(MAKE) debug -sC $(C_PATH)
 
-$(A_NAME):
-	@ $(MAKE) -sC ./lib/
+$(A_NAME): lib
 	@ $(MAKE) -sC $(A_PATH)
 
-$(C_NAME):
-	@ $(MAKE) -sC ./lib/
+$(C_NAME):lib
 	@ $(MAKE) -sC $(C_PATH)
 
-a_debug:
-	@ $(MAKE) -sC ./lib/
+a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
 
-c_debug:
-	@ $(MAKE) -sC ./lib/
+c_debug: lib
 	@ $(MAKE) debug -sC $(C_PATH)
 
 a_re: fclean $(A_NAME)
 
 c_re: fclean $(C_NAME)
 
-.PHONY: all re clean fclean debug a_debug c_debug a_re c_re asm corewar
+.PHONY: all re clean fclean debug a_debug c_debug a_re c_re asm corewar lib

@@ -10,4 +10,7 @@
     #define UNUSED __attribute__((unused))
 
     #include "op.h"
+    #include "my.h"
+    #include "myprintf.h"
+
 #endif

@@ -20,7 +20,7 @@ BUILD_DIR	=	../.trash/asm
 
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
-LIB_FLAGS	=	-L./../lib/ -lmy
+LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 CFLAGS		=	-Wall -Wextra -I./include/ -I./../include/ -I./../lib/include/
 
 TMP_FILES	=	*.gcno					\
