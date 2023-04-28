@@ -36,29 +36,9 @@ C_FULL_RED	= \e[41m
 %:
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
-all: lib
+all: $(A_NAME) $(C_NAME)
 	@ $(CC) -o for_clion lib/my/main.c
 	@ rm for_clion
-	@ $(MAKE) -sC $(A_PATH)
-	@ $(MAKE) -sC $(C_PATH)
-
-lib:
-	@ $(MAKE) -sC ./lib/
-
-clean:
-	@ $(RM) $(TMP_FILES)
-
-fclean:		clean
-	@ $(RM) $(NAME)
-	@ $(MAKE) fclean -sC ./lib/
-	@ $(MAKE) fclean -sC $(A_PATH)
-	@ $(MAKE) fclean -sC $(C_PATH)
-
-re:		fclean all
-
-debug: lib
-	@ $(MAKE) debug -sC $(A_PATH)
-	@ $(MAKE) debug -sC $(C_PATH)
 
 $(A_NAME): lib
 	@ $(MAKE) -sC $(A_PATH)
@@ -66,14 +46,28 @@ $(A_NAME): lib
 $(C_NAME): lib
 	@ $(MAKE) -sC $(C_PATH)
 
+clean:
+	@ $(RM) $(TMP_FILES)
+
+fclean:		clean
+	@ $(RM) $(NAME)
+	@ $(MAKE) fclean -sC ./lib/my
+	@ $(MAKE) fclean -sC ./lib/my_printf
+	@ $(MAKE) fclean -sC $(A_PATH)
+	@ $(MAKE) fclean -sC $(C_PATH)
+
+re:		fclean all
+
+debug: lib a_debug c_debug
+
 a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
 
 c_debug: lib
 	@ $(MAKE) debug -sC $(C_PATH)
 
-a_re: fclean $(A_NAME)
+lib:
+	@ $(MAKE) -sC ./lib/my
+	@ $(MAKE) -sC ./lib/my_printf
 
-c_re: fclean $(C_NAME)
-
-.PHONY: all re clean fclean debug a_debug c_debug a_re c_re asm corewar lib
+.PHONY: all re clean fclean debug a_debug c_debug asm corewar lib
