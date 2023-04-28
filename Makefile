@@ -30,6 +30,8 @@ C_GREEN 	= \e[32m
 C_YELLOW 	= \e[33m
 C_BLUE		= \e[34m
 C_PINK		= \e[35m
+C_CYAN		= \e[36m
+C_GREY		= \e[37m
 C_FULL_RED	= \e[41m
 # ----------------------- #
 
@@ -55,6 +57,7 @@ fclean:		clean
 	@ $(MAKE) fclean -sC ./lib/my_printf
 	@ $(MAKE) fclean -sC $(A_PATH)
 	@ $(MAKE) fclean -sC $(C_PATH)
+	@ $(ECHO) "$(C_GREY)|==========> TEMPORARY FILE DEL. <==========|$(C_RESET)"
 
 re:		fclean all
 
