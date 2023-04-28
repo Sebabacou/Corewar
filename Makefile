@@ -30,22 +30,22 @@ C_GREEN 	= \e[32m
 C_YELLOW 	= \e[33m
 C_BLUE		= \e[34m
 C_PINK		= \e[35m
+C_CYAN		= \e[36m
+C_GREY		= \e[37m
 C_FULL_RED	= \e[41m
 # ----------------------- #
-
 
 %:
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
-lib:
-	@ $(MAKE) -sC ./lib/
-
-
-all: lib
+all: $(A_NAME) $(C_NAME)
 	@ $(CC) -o for_clion lib/my/main.c
-	@ mkdir -p $(BUILD_DIR)
-	@ mv for_clion $(BUILD_DIR)
+	@ rm for_clion
+
+$(A_NAME): lib
 	@ $(MAKE) -sC $(A_PATH)
+
+$(C_NAME): lib
 	@ $(MAKE) -sC $(C_PATH)
 
 clean:
@@ -53,21 +53,15 @@ clean:
 
 fclean:		clean
 	@ $(RM) $(NAME)
-	@ $(MAKE) fclean -sC ./lib/
+	@ $(MAKE) fclean -sC ./lib/my
+	@ $(MAKE) fclean -sC ./lib/my_printf
 	@ $(MAKE) fclean -sC $(A_PATH)
 	@ $(MAKE) fclean -sC $(C_PATH)
+	@ $(ECHO) "$(C_GREY)|==========> TEMPORARY FILE DEL. <==========|$(C_RESET)"
 
 re:		fclean all
 
-debug: lib
-	@ $(MAKE) debug -sC $(A_PATH)
-	@ $(MAKE) debug -sC $(C_PATH)
-
-$(A_NAME): lib
-	@ $(MAKE) -sC $(A_PATH)
-
-$(C_NAME):lib
-	@ $(MAKE) -sC $(C_PATH)
+debug: lib a_debug c_debug
 
 a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
@@ -75,8 +69,8 @@ a_debug: lib
 c_debug: lib
 	@ $(MAKE) debug -sC $(C_PATH)
 
-a_re: fclean $(A_NAME)
+lib:
+	@ $(MAKE) -sC ./lib/my
+	@ $(MAKE) -sC ./lib/my_printf
 
-c_re: fclean $(C_NAME)
-
-.PHONY: all re clean fclean debug a_debug c_debug a_re c_re asm corewar lib
+.PHONY: all re clean fclean debug a_debug c_debug asm corewar lib
