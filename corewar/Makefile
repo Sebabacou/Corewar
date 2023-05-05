@@ -17,7 +17,7 @@ vpath %.c $(VPATH)
 
 #========> OTHER <=======#
 SRC := main.c
-
+SRC += temp.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c

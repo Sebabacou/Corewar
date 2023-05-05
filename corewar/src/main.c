@@ -17,5 +17,5 @@ int main( int argc, UNUSED char **argv)
         } else
             return 84;
     }
-    return 0;
+    return 84;
 }
