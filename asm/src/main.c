@@ -9,5 +9,5 @@
 
 int main( UNUSED int argc, UNUSED char **argv)
 {
-    return 0;
+    return 84;
 }

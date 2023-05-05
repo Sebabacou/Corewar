@@ -13,9 +13,12 @@ int main( int argc, UNUSED char **argv)
         argv[1] = del_char(argv[1], '-');
         if (my_strcmp(argv[1], "h") == 0) {
             display_help();
+            free(argv[1]);
             return 0;
-        } else
+        } else {
+            free(argv[1]);
             return 84;
+        }
     }
     return 84;
 }
