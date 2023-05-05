@@ -19,7 +19,7 @@ TMP_FILES	=	*.gcno					\
 				*.gcda					\
 				vgcore.*				\
 				coding-style-reports.log\
-				-fr $(BUILD_DIR)
+				-rf $(BUILD_DIR)
 
 # ------ DISPLAY -------- #
 
@@ -61,7 +61,7 @@ fclean:		clean
 
 re:		fclean all
 
-debug: lib a_debug c_debug
+debug: fclean lib a_debug c_debug
 
 a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)

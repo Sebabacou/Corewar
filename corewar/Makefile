@@ -17,13 +17,11 @@ vpath %.c $(VPATH)
 
 #========> OTHER <=======#
 SRC := main.c
-SRC += temp.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
 
-
-#=========> TOOLS <========#
+#=========> TOOLS <========#S
 SRC += op.c
 SRC += del_char.c
 
@@ -33,7 +31,8 @@ BUILD_DIR	=	../.trash/corewar
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
-CFLAGS		=	-Wall -Wextra -I./include/ -I./../include/ -I./../lib/include/
+IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\
@@ -61,7 +60,7 @@ all:		$(NAME)
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
 %.c:
-	@ $(ECHO) "$(C_RED)[corwar] -> $@$(C_RESET)"
+	@ $(ECHO) "$(C_PINK)[corwar] $(C_RESET)-> $(C_RED)$@$(C_RESET)"
 	@ $(DIE)
 
 $(BUILD_DIR)/%.o: %.c
@@ -77,7 +76,6 @@ fclean:
 	@ $(RM) $(NAME)
 
 debug: CFLAGS += -g
-debug: CFLAGS += -Werror
 debug: all
 
-.PHONY: all re fclean debug
+.PHONY: all fclean debug
