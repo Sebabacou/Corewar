@@ -11,12 +11,12 @@
     #include "all.h"
 
     typedef struct champion_s {
-    } champion_t ;
+    }champion_t;
 
     typedef struct vm_s {
         unsigned char **buffer;
         size_t cycle;
-    } vm_t ;
+    }vm_t;
 
     //========> OTHER <========//
     int check_help(char *arg);

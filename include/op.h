@@ -57,9 +57,6 @@ typedef struct op_s {
     # define DIR_SIZE        4
     # define REG_SIZE        DIR_SIZE
 
-/*
-** op_tab
-*/
 static const op_t op_tab[] =
         {
         {
@@ -149,9 +146,6 @@ static const op_t op_tab[] =
             }
         };
 
-/*
-** header
-*/
     # define PROG_NAME_LENGTH        128
     # define COMMENT_LENGTH          2048
 
@@ -163,9 +157,6 @@ typedef struct header_s {
     char comment[COMMENT_LENGTH + 1];
 }header_t;
 
-/*
-** live
-*/
     # define CYCLE_TO_DIE    1536
     # define CYCLE_DELTA     5
     # define NBR_LIVE        40
