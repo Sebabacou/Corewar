@@ -58,7 +58,7 @@ $(BUILD_DIR)/%.o: %.c
 	@ $(ECHO) "$(C_BLUE)[ASM]$(C_RESET) -> $<"
 
 $(NAME):	$(OBJ)
-	@ $(CC) -o $@ $? $(LIB_FLAGS)
+	@ $(CC) -o $@ $(OBJ) $(LIB_FLAGS)
 	@ $(ECHO) "$(C_BLUE)|==========> $(NAME) compiled. <==========|$(C_RESET)"
 
 fclean:

@@ -12,22 +12,28 @@ NAME		=	corewar
 VPATH := src
 VPATH += src/tools
 VPATH += src/display
-VPATH += src/virtual_machine
+VPATH += src/initialization/
+VPATH += src/initialization/settings_flag
 
 vpath %.c $(VPATH)
 
 #========> OTHER <=======#
 SRC := main.c
 SRC += help_checker.c
+SRC += free_all.c
 
-#==========> VM <=========#
-SRC += init_virtual_machine.c
+#==========> INITIALIZATION <=========#
+SRC += init_vm.c
+SRC += check_argv.c
+SRC += check_settings_flag.c
+SRC += flag_dump.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
 
 #=========> TOOLS <========#
 SRC += del_char.c
+SRC += take_number.c
 
 BUILD_DIR	=	../.trash/corewar
 
@@ -57,7 +63,7 @@ C_PINK		= \e[35m
 C_FULL_RED	= \e[41m
 # ----------------------- #
 
-all:		$(NAME)
+all:	$(NAME)
 
 %:
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
@@ -72,7 +78,7 @@ $(BUILD_DIR)/%.o: %.c
 	@ $(ECHO) "$(C_PINK)[corewar]$(C_RESET) -> $<"
 
 $(NAME):	$(OBJ)
-	@ $(CC) -o $@ $? $(LIB_FLAGS)
+	@ $(CC) -o $@ $^ $(LIB_FLAGS)
 	@ $(ECHO) "$(C_PINK)|==========> $(NAME) compiled. <==========|$(C_RESET)"
 
 fclean:

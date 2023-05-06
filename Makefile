@@ -19,7 +19,7 @@ TMP_FILES	=	*.gcno					\
 				*.gcda					\
 				vgcore.*				\
 				coding-style-reports.log\
-				-rf $(BUILD_DIR)
+				-r $(BUILD_DIR)
 
 # ------ DISPLAY -------- #
 
@@ -43,10 +43,10 @@ all: $(A_NAME) $(C_NAME)
 	@ rm for_clion
 
 $(A_NAME): lib
-	@ $(MAKE) -sC $(A_PATH)
+	@ $(MAKE) -j -sC $(A_PATH)
 
 $(C_NAME): lib
-	@ $(MAKE) -sC $(C_PATH)
+	@ $(MAKE) -j -sC $(C_PATH)
 
 clean:
 	@ $(RM) $(TMP_FILES)
