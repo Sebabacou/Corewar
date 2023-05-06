@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2023
-** corwar
+** corewar
 ** File description:
 ** this file is only for the gestion of Makefil in Clion
 */

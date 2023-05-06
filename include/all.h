@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2023
-** corwar
+** corewar
 ** File description:
 ** all.h
 */

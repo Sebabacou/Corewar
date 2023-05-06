@@ -12,19 +12,22 @@ NAME		=	corewar
 VPATH := src
 VPATH += src/tools
 VPATH += src/display
+VPATH += src/virtual_machine
 
 vpath %.c $(VPATH)
 
 #========> OTHER <=======#
 SRC := main.c
+SRC += help_checker.c
+
+#==========> VM <=========#
+SRC += init_virtual_machine.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
 
-#=========> TOOLS <========#S
-SRC += op.c
+#=========> TOOLS <========#
 SRC += del_char.c
-
 
 BUILD_DIR	=	../.trash/corewar
 
@@ -32,7 +35,7 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS) -g
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\
@@ -60,13 +63,13 @@ all:		$(NAME)
 	@ $(ECHO) "$(C_RED)|==========> RULE NOT FOUND. <==========|$(C_RESET)"
 
 %.c:
-	@ $(ECHO) "$(C_PINK)[corwar] $(C_RESET)-> $(C_RED)$@$(C_RESET)"
+	@ $(ECHO) "$(C_PINK)[corewar] $(C_RESET)-> $(C_RED)$@$(C_RESET)"
 	@ $(DIE)
 
 $(BUILD_DIR)/%.o: %.c
 	@ mkdir -p $(@D)
 	@ $(CC) $(CFLAGS) -c $< -o $@
-	@ $(ECHO) "$(C_PINK)[corwar]$(C_RESET) -> $<"
+	@ $(ECHO) "$(C_PINK)[corewar]$(C_RESET) -> $<"
 
 $(NAME):	$(OBJ)
 	@ $(CC) -o $@ $? $(LIB_FLAGS)

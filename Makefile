@@ -61,7 +61,7 @@ fclean:		clean
 
 re:		fclean all
 
-debug: fclean lib a_debug c_debug
+debug: fclean a_debug c_debug
 
 a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
