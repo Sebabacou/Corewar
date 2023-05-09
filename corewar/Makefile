@@ -16,6 +16,8 @@ VPATH += src/free
 VPATH += src/initialization/
 VPATH += src/initialization/vm
 VPATH += src/initialization/champion
+VPATH += src/vm_cpu
+VPATH += src/fct_champ
 
 vpath %.c $(VPATH)
 
@@ -36,6 +38,12 @@ SRC += check_settings_flag.c
 SRC += init_champion.c
 SRC += settings_id.c
 SRC += settings_load_address.c
+
+#=========> VM <========#
+SRC += loop_vm.c
+
+#=========> VM <========#
+SRC += live.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
