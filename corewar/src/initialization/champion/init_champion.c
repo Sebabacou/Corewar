@@ -20,7 +20,6 @@ static void champ_init_value(vm_t *vm)
 
 int init_champ(vm_t *vm)
 {
-    printf("actu champ = %ld\n", vm->champ_actu);
     champ_init_value(vm);
     if (vm->champ_actu < 4)
         vm->champ_actu++;

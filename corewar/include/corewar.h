@@ -25,6 +25,7 @@
     typedef struct vm_s {
         unsigned char *buffer;
         ssize_t cycle_max;
+        size_t cycle_to_die;
         size_t actual_cycle;
         champion_t *champion;
         size_t champ_actu;
