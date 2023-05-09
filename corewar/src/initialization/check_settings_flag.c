@@ -9,8 +9,8 @@
 
 static const settings_flag_t flags[] = {
         {"-dump", manage_dump},
-        {"-n", manage_dump},
-        {"-a", manage_dump},
+        {"-n", manage_n},
+        {"-a", manage_a},
         {NULL, NULL}
 };
 

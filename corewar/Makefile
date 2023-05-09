@@ -12,21 +12,30 @@ NAME		=	corewar
 VPATH := src
 VPATH += src/tools
 VPATH += src/display
+VPATH += src/free
 VPATH += src/initialization/
-VPATH += src/initialization/settings_flag
+VPATH += src/initialization/vm
+VPATH += src/initialization/champion
 
 vpath %.c $(VPATH)
 
 #========> OTHER <=======#
 SRC := main.c
 SRC += help_checker.c
+
+#========> FREE <=======#
 SRC += free_all.c
+SRC += my_free.c
+SRC += free_champ.c
 
 #==========> INITIALIZATION <=========#
-SRC += init_vm.c
+SRC += init_virtual_machine.c
 SRC += check_argv.c
+SRC += settings_dump.c
 SRC += check_settings_flag.c
-SRC += flag_dump.c
+SRC += init_champion.c
+SRC += settings_id.c
+SRC += settings_load_address.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c

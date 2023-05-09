@@ -53,8 +53,7 @@ clean:
 
 fclean:		clean
 	@ $(RM) $(NAME)
-	@ $(MAKE) fclean -sC ./lib/my
-	@ $(MAKE) fclean -sC ./lib/my_printf
+	@ $(MAKE) fclean -sC ./lib
 	@ $(MAKE) fclean -sC $(A_PATH)
 	@ $(MAKE) fclean -sC $(C_PATH)
 	@ $(ECHO) "$(C_GREY)|==========> TEMPORARY FILE DEL. <==========|$(C_RESET)"
@@ -64,13 +63,12 @@ re:		fclean all
 debug: fclean a_debug c_debug
 
 a_debug: lib
-	@ $(MAKE) debug -sC $(A_PATH)
+	@ $(MAKE) debug -j -sC $(A_PATH)
 
 c_debug: lib
-	@ $(MAKE) debug -sC $(C_PATH)
+	@ $(MAKE) debug -j -sC $(C_PATH)
 
 lib:
-	@ $(MAKE) -sC ./lib/my
-	@ $(MAKE) -sC ./lib/my_printf
+	@ $(MAKE) -j -sC ./lib
 
 .PHONY: all re clean fclean debug a_debug c_debug asm corewar lib

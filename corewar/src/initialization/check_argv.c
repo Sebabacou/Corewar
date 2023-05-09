@@ -12,13 +12,17 @@ int check_argv(char **argv, vm_t *vm)
     ssize_t to_skip = -1;
 
     for (size_t i = 1; argv[i] != NULL; i++) {
-        if ((to_skip = check_in_settings_flag(argv, vm , i)) > 0) {
+        if ((to_skip = check_in_settings_flag(argv, vm , i)) >= 0) {
             i += to_skip;
             continue;
         }
+        if (my_str_in_str(argv[i], ".cor") == 1) {
+            init_champ(vm);
+            continue;
+        }
         if (to_skip == -1) {
-            printf("%s: Not a know settings. For help use ./corewar/corewar"
-            " -h.\n", argv[i]);
+            my_printf("%s: Not a know settings. For help use ./corewar/corewar"
+                      " -h.\n", argv[i]);
         }
     }
     return 0;
