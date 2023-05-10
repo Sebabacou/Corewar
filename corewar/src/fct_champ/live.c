@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void fct_live(vm_t *vm)
+void fct_live(vm_t *vm, int i)
 {
-
+    vm->champion[i].live = true;    
 }

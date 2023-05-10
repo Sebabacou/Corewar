@@ -43,7 +43,7 @@ SRC += read_champion.c
 #=========> VM <========#
 SRC += loop_vm.c
 
-#=========> VM <========#
+#=========> FCT <========#
 SRC += live.c
 
 #========> DISPLAY <=======#
