@@ -6,17 +6,17 @@
 */
 
 #include "corewar.h"
+#include <errno.h>
 
 int read_champion(UNUSED vm_t *vm, char *path)
 {
-    char *buffer = NULL;
-    int fd = open(path, O_RDONLY);
-    size_t size_stat = 0;
+    char *buffer = open_file_nostat(path);
+//    char **name = my_str_to_word_array(path, "/");
 
-    if (fd == -1)
+    if (buffer == NULL)
         return 84;
-    for (size_stat = 0; read(fd, buffer, 1) != -1 ; size_stat++);
-    if (read(fd ,buffer, size_stat) == -1)
-        return 84;
+//    for (size_t i = 0; name[i] != NULL; i++);
+//    printf("%s|\n", buffer);
+    free(buffer);
     return 0;
 }
