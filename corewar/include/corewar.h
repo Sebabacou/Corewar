@@ -12,15 +12,21 @@
 
     #include "all.h"
 
+    typedef struct process_s {
+        size_t cycle_to_wait;
+        size_t pos_x;
+        size_t pos_y;
+    }process_t;
+
     typedef struct champion_s {
         size_t id;
         char *name;
         unsigned int reg[REG_NUMBER];
         int pc;
         bool carry;
-        size_t pos_x;
-        size_t pos_y;
         bool live;
+        size_t nbr_of_process;
+        process_t *process;
     }champion_t;
 
     typedef struct vm_s {

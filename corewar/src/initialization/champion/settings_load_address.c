@@ -16,7 +16,7 @@ ssize_t manage_a(char **argv, size_t index, vm_t *vm)
         return -1;
     for (pos_x = 0; nbr > MEM_Y; pos_x++)
         nbr -= MEM_Y;
-    vm->champion[vm->champ_actu].pos_y = nbr;
-    vm->champion[vm->champ_actu].pos_x = pos_x;
+    vm->champion[vm->champ_actu].process[0].pos_y = nbr;
+    vm->champion[vm->champ_actu].process[0].pos_x = pos_x;
     return 1;
 }
