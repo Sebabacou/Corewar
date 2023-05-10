@@ -63,12 +63,12 @@ re:		fclean all
 debug: fclean a_debug c_debug
 
 a_debug: lib
-	@ $(MAKE) debug -j -sC $(A_PATH)
+	@ $(MAKE) debug -sC $(A_PATH)
 
 c_debug: lib
-	@ $(MAKE) debug -j -sC $(C_PATH)
+	@ $(MAKE) debug -sC $(C_PATH)
 
 lib:
-	@ $(MAKE) -j -sC ./lib
+	@ $(MAKE) -sC ./lib
 
 .PHONY: all re clean fclean debug a_debug c_debug asm corewar lib

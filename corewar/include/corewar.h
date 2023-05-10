@@ -18,17 +18,19 @@
         unsigned int reg[REG_NUMBER];
         int pc;
         bool carry;
-        size_t pos;
+        size_t pos_x;
+        size_t pos_y;
         bool live;
     }champion_t;
 
     typedef struct vm_s {
-        unsigned char *buffer;
+        unsigned char **buffer;
         ssize_t cycle_max;
         size_t cycle_to_die;
         size_t actual_cycle;
         champion_t *champion;
         size_t champ_actu;
+        size_t nbr_champ;
     }vm_t;
 
     typedef struct settings_flag_s {
@@ -48,6 +50,7 @@
     int check_argv(char **argv, vm_t *vm);
     ssize_t check_in_settings_flag(char **argv, vm_t *vm, size_t i);
     int init_champ(vm_t *vm);
+    int read_champion(UNUSED vm_t *vm, char *path);
 
     //=========> FONCT POINTER <========//
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);
@@ -60,5 +63,7 @@
     //=========> TOOLS <========//
     char *del_char(char *str, char c);
     ssize_t take_number(char *arg);
+    char *my_strdup_shell(char *str, int nbr_byte);
+    char *open_file_nostat(char *filepath);
 
 #endif
