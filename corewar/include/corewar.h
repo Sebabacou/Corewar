@@ -27,6 +27,7 @@
         bool live;
         size_t nbr_of_process;
         process_t *process;
+        char *buffer;
     }champion_t;
 
     typedef struct vm_s {

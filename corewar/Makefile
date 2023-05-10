@@ -52,7 +52,6 @@ SRC += display_help.c
 #=========> TOOLS <========#
 SRC += del_char.c
 SRC += take_number.c
-SRC += open_file.c
 SRC += strndup.c
 
 BUILD_DIR	=	../.trash/corewar
