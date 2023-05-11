@@ -57,6 +57,7 @@
     ssize_t check_in_settings_flag(char **argv, vm_t *vm, size_t i);
     int init_champ(vm_t *vm);
     int read_champion(UNUSED vm_t *vm, char *path);
+    void setup_start(vm_t *vm);
 
     //=========> FONCT POINTER <========//
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);

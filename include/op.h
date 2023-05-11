@@ -8,8 +8,8 @@
 #ifndef _OP_H_
     #define _OP_H_
     #define MEM_SIZE                (6 * 1024)
-    #define MEM_X                   96
-    #define MEM_Y                   64
+    #define MEM_Y                   96
+    #define MEM_X                   64
 
     #define IDX_MOD                 512   /* modulo of the index < */
     #define MAX_ARGS_NUMBER         4
