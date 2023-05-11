@@ -11,11 +11,11 @@ static int check_champ(char *arg, vm_t *vm)
 {
     if (my_str_in_str(arg, ".cor") == 1) {
         read_champion(vm, arg);
-        init_champ(vm);
         if (vm->nbr_champ < 4) {
             vm->champ_actu++;
             vm->nbr_champ++;
         }
+        init_champ(vm);
         return 1;
     }
     return 0;
