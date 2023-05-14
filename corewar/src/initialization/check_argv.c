@@ -33,8 +33,8 @@ int check_argv(char **argv, vm_t *vm)
         if (check_champ(argv[i], vm) == 1)
             continue;
         if (to_skip == -1) {
-            my_printf("%s: Not a know settings. For help use ./corewar/corewar"
-                      " -h.\n", argv[i]);
+            my_printf("%s: Not a know settings. \
+For help use ./corewar/corewar"" -h.\n", argv[i]);
         }
     }
     return 0;

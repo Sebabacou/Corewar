@@ -15,7 +15,6 @@ void setup_start(vm_t *vm)
     for (int i = 0; i != MEM_Y; i += dif) {
         vm->champion[champ].process[champ].pos_x = 0;
         vm->champion[champ].process[champ].pos_x = i;
-
     }
 
     return;
