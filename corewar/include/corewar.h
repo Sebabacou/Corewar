@@ -28,6 +28,7 @@
         size_t nbr_of_process;
         process_t *process;
         char *buffer;
+        ssize_t size_champion;
     }champion_t;
 
     typedef struct vm_s {

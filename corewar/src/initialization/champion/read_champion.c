@@ -7,42 +7,62 @@
 
 #include "corewar.h"
 #include <errno.h>
-#include <string.h>
+
+static int in_champ_buffer(char *buffer, int fd, vm_t *vm)
+{
+    buffer = malloc(sizeof(char) * 12288);
+    if (buffer == NULL)
+        return 84;
+    vm->champion[vm->champ_actu].size_champion = read(fd, buffer, 6144);
+    if (vm->champion[vm->champ_actu].size_champion <= -1) {
+        free(buffer);
+        return 84;
+    }
+    vm->champion[vm->champ_actu].buffer = malloc(vm->champion[vm->champ_actu]
+            .size_champion + 1);
+    if (vm->champion[vm->champ_actu].buffer == NULL) {
+        free(buffer);
+        return 84;
+    }
+    if (read(fd, vm->champion[vm->champ_actu].buffer,
+             vm->champion[vm->champ_actu].size_champion ) <= -1) {
+        free(buffer);
+        return 84;
+    }
+//    printf("size = %ld\n", vm->champion[vm->champ_actu].size_champion);
+    vm->champion[vm->champ_actu].size_champion = vm->champion[vm->champ_actu]
+            .size_champion - (PROG_NAME_LENGTH + COMMENT_LENGTH);
+    free(buffer);
+    return 0;
+}
+
+static int define_name_champ(char *path, vm_t *vm)
+{
+    char **name = my_str_to_word_array(path, "/");
+    char **final_name = NULL;
+    size_t i = 0;
+
+    for (i = 0; my_str_in_str(name[i], ".cor") != true; i++);
+    final_name = my_str_to_word_array(name[i], ".");
+    vm->champion[vm->champ_actu].name = my_strdup(final_name[0]);
+    my_free_array((void **)name);
+    my_free_array((void **)final_name);
+    return 0;
+}
 
 int read_champion(UNUSED vm_t *vm, char *path)
 {
-//    char **name = my_str_to_word_array(path, "/");
     char *buffer = NULL;
     int fd = open(path, O_RDONLY);
-    ssize_t size_to_read = 0;
 
     if (vm->champion == NULL || fd == -1)
         return 84;
-
-    if ((buffer = malloc(sizeof(char) * 12288)) == NULL)
-        return 84;
-    if ((size_to_read = read(fd, buffer, 6144)) <= -1) {
+    if (in_champ_buffer(buffer, fd, vm) == 84) {
         close(fd);
-        free(buffer);
         return 84;
     }
-    if ((vm->champion[vm->champ_actu].buffer = malloc(size_to_read)) ==
-    NULL) {
-        close(fd);
-        free(buffer);
-        return 84;
-    }
-    if (read(fd, vm->champion[vm->champ_actu].buffer, size_to_read) <= -1) {
-        close(fd);
-        free(buffer);
-        return 84;
-    }
+    define_name_champ(path, vm);
     close(fd);
-    printf("\nchamp actu = %ld\n\n", vm->champ_actu);
-    for ( ssize_t i = PROG_NAME_LENGTH + COMMENT_LENGTH; i != (size_to_read -
-    PROG_NAME_LENGTH + COMMENT_LENGTH); i++)
-        printf("%x|", vm->champion[vm->champ_actu].buffer[i]);
-//    my_free_array((void **)name);
     free(buffer);
     return 0;
 }
