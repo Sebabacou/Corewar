@@ -9,9 +9,9 @@
 
 static int init_process(vm_t *vm)
 {
-    vm->champion[vm->champ_actu].nbr_of_process = 1;
-    vm->champion[vm->champ_actu].process_actu = 0;
-    vm->champion[vm->champ_actu].process = malloc(sizeof(process_t *) * 2);
+    VM_CHAMP_ACTU.nbr_of_process = 1;
+    VM_CHAMP_ACTU.process_actu = 0;
+    VM_CHAMP_ACTU.process = malloc(sizeof(process_t *) * 2);
     if (VM_CHAMP_ACTU.process == NULL)
         return 84;
     VM_PROCESS_ACTU = malloc(sizeof(process_t));

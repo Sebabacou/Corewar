@@ -17,19 +17,19 @@ static void init_simple_value(vm_t *vm)
 
 static int init_malloc_value(vm_t *vm)
 {
-    vm->buffer = my_calloc((MEM_X + 1) * sizeof(unsigned char *));
+    vm->buffer = my_calloc((MEM_Y + 1) * sizeof(unsigned char *));
     if (vm->buffer == NULL) {
         free(vm);
         return 84;
     }
-    for (size_t i = 0; i != MEM_X; i++)
-        if ((vm->buffer[i] = my_calloc(MEM_Y * sizeof(unsigned  char))) ==
+    for (size_t i = 0; i != MEM_Y; i++)
+        if ((vm->buffer[i] = my_calloc(MEM_X * sizeof(unsigned  char))) ==
             NULL) {
             free(vm->buffer);
             free(vm);
             return 84;
         }
-    vm->buffer[MEM_X] = NULL;
+    vm->buffer[MEM_Y] = NULL;
     vm->champion = malloc(sizeof(champion_t) * (4 + 1));
     if (vm->champion == NULL) {
         free_all(vm, NONE_C);

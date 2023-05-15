@@ -13,7 +13,6 @@ static int is_alive(vm_t *vm)
         if (vm->champion[i].live == false)
             return i;
     }
-
     return -1;
 }
 
@@ -32,6 +31,5 @@ int loop_vm(vm_t *vm)
         if (check != -2)
             return 0;
     }
-
     return 0;
 }
