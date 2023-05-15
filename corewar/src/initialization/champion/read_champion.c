@@ -29,7 +29,6 @@ static int in_champ_buffer(char *buffer, int fd, vm_t *vm)
         free(buffer);
         return 84;
     }
-//    printf("size = %ld\n", vm->champion[vm->champ_actu].size_champion);
     vm->champion[vm->champ_actu].size_champion = vm->champion[vm->champ_actu]
             .size_champion - (PROG_NAME_LENGTH + COMMENT_LENGTH);
     free(buffer);
@@ -62,7 +61,10 @@ int read_champion(UNUSED vm_t *vm, char *path)
         return 84;
     }
     define_name_champ(path, vm);
-
+    vm->champ_actu = 0;
+    for (ssize_t i = 0; i != VM_CHAMP_ACTU
+    .size_champion + PROG_NAME_LENGTH + COMMENT_LENGTH; i++)
+        printf("%x",VM_CHAMP_ACTU.buffer[i]);
     close(fd);
     free(buffer);
     return 0;

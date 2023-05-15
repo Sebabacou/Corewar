@@ -49,7 +49,6 @@ int init_vm(UNUSED char **argv, vm_t *vm)
         free_all(vm, ALL);
         return 84;
     }
-    printf("nbr champ = %ld\n", vm->nbr_champ);
     vm->champ_actu = 0;
     load_champion_in_vm(vm);
     return 0;
