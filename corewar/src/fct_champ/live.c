@@ -22,6 +22,7 @@ int mooving_fct(champion_t *champion, int dist, int proc)
 
     champion->process[proc].pos_x = x;
     champion->process[proc].pos_y = y;
+    return 0;
 }
 
 void fct_live(champion_t *champion, int i)

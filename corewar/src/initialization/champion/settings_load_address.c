@@ -11,7 +11,6 @@ ssize_t manage_a(char **argv, size_t index, vm_t *vm)
 {
     ssize_t nbr = take_number(argv[index + 1]);
     size_t x = 0;
-    UNUSED int check = 0;
     int y = 0;
 
     if (nbr == -1)
@@ -23,7 +22,7 @@ ssize_t manage_a(char **argv, size_t index, vm_t *vm)
         }
         x++;
     }
-    vm->champion[vm->champ_actu].process[0].pos_y = y - 1;
-    vm->champion[vm->champ_actu].process[0].pos_x = x - 1;
+    vm->champion[vm->champ_actu].process[0]->pos_y = y - 1;
+    vm->champion[vm->champ_actu].process[0]->pos_x = x - 1;
     return 1;
 }

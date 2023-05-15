@@ -9,6 +9,8 @@
     #define _COREWAR_H_
     #define ALL 0
     #define NONE_C 1
+    #define VM_CHAMP_ACTU vm->champion[vm->champ_actu]
+    #define VM_PROCESS_ACTU VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu]
 
     #include "all.h"
 
@@ -26,7 +28,8 @@
         bool carry;
         bool live;
         size_t nbr_of_process;
-        process_t *process;
+        size_t process_actu;
+        process_t **process;
         char *buffer;
         ssize_t size_champion;
     }champion_t;
@@ -60,6 +63,7 @@
     int init_champ(vm_t *vm);
     int read_champion(UNUSED vm_t *vm, char *path);
     void setup_start(vm_t *vm);
+    int load_champion_in_vm(vm_t *vm);
 
     //=========> FONCT POINTER <========//
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);

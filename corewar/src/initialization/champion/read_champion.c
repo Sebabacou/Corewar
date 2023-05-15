@@ -62,6 +62,7 @@ int read_champion(UNUSED vm_t *vm, char *path)
         return 84;
     }
     define_name_champ(path, vm);
+
     close(fd);
     free(buffer);
     return 0;

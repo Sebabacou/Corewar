@@ -40,6 +40,7 @@ SRC += settings_id.c
 SRC += settings_load_address.c
 SRC += read_champion.c
 SRC += init_startchamp.c
+SRC += load_champion_in_vm.c
 
 #=========> VM <========#
 SRC += loop_vm.c
