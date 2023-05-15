@@ -22,7 +22,7 @@ ssize_t manage_a(char **argv, size_t index, vm_t *vm)
         }
         x++;
     }
-    vm->champion[vm->champ_actu].process[0]->pos_y = y - 1;
-    vm->champion[vm->champ_actu].process[0]->pos_x = x - 1;
+    VM_PROCESS_ACTU->pos_y = y - 1;
+    VM_PROCESS_ACTU->pos_x = x - 1;
     return 1;
 }

@@ -45,12 +45,16 @@ int init_vm(UNUSED char **argv, vm_t *vm)
         return 84;
     if (init_champ(vm) != 0)
         return 84;
+    if (VM_PROCESS_ACTU == NULL)
+        printf("11/09\n");
     if (check_argv(argv, vm) != 0) {
         free_all(vm, ALL);
         return 84;
     }
     printf("nbr champ = %ld\n", vm->nbr_champ);
     vm->champ_actu = 0;
+    if (VM_PROCESS_ACTU == NULL)
+        printf("bam\n");
     load_champion_in_vm(vm);
     return 0;
 }
