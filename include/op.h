@@ -148,8 +148,8 @@ static const op_t op_tab[] =
             0, 0, 0
             }
         };
-
-    # define PROG_NAME_LENGTH        128
+//TODO : ask to aer why miss 16 char
+    # define PROG_NAME_LENGTH        128 + 16
     # define COMMENT_LENGTH          2048
 
 typedef struct header_s {
