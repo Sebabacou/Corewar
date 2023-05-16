@@ -46,6 +46,11 @@
         size_t nbr_champ;
     }vm_t;
 
+    typedef struct action_s {
+        unsigned int name;
+        int (*fonk)(vm_t *, int proc);
+    } action_t;
+
     typedef struct settings_flag_s {
         char *name;
         ssize_t (*fonct)(char **, size_t, vm_t *);
@@ -80,5 +85,8 @@
     ssize_t take_number(char *arg);
     char *my_strdup_shell(char *str, int nbr_byte);
     char *open_file_nostat(char *filepath);
+
+    //=========> FCT-VM <========//
+    void fct_live(champion_t *champion, int i);
 
 #endif
