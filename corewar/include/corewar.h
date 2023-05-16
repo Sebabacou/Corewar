@@ -62,7 +62,7 @@
     void my_free_array(void **array);
     void my_free(void* to_free);
     void free_champ(champion_t *champion, size_t nbr_champ);
-
+    int convert_endian(int value);
 
     //=========> VM <========//
     int loop_vm(vm_t *vm);
@@ -88,8 +88,6 @@
     //=========> TOOLS <========//
     char *del_char(char *str, char c);
     ssize_t take_number(char *arg);
-    char *my_strdup_shell(char *str, int nbr_byte);
-    char *open_file_nostat(char *filepath);
 
     //=========> FCT-VM <========//
     int fct_live(vm_t *vm, int i);

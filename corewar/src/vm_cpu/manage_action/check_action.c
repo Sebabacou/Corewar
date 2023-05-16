@@ -27,14 +27,26 @@ static const action_t action[] = {
         {0, NULL},
 };
 
+int verif_fonct(vm_t *vm, size_t i, size_t a)
+{
+    if (action[a].name == vm->buffer[VM_CHAMP_ACTU
+    .process[i]->pos_y][VM_CHAMP_ACTU.process[i]->pos_x])
+        if (action[a].fonk != NULL)
+            return action[a].fonk(vm, (int)i);
+    return -1;
+}
+
 int check_in_tab(vm_t *vm, size_t i)
 {
+    int test = 0;
+
     for (size_t a = 0; action[a].name != 0; a++) {
-        if (action[a].name == vm->buffer[VM_CHAMP_ACTU
-        .process[i]->pos_y][VM_CHAMP_ACTU.process[i]->pos_x]) {
-            if (action[a].fonk != NULL)
-                return action[a].fonk(vm, (int)i);
-        }
+        printf("%x : ", action[a].name);
+        printf("%x\n",vm->buffer[VM_CHAMP_ACTU.process[i]->pos_y][VM_CHAMP_ACTU
+        .process[i]->pos_x]);
+        test = verif_fonct(vm, i, a);
+        if (test != -1)
+            return test;
     }
     return 0;
 }

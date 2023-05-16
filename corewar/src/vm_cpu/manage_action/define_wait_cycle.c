@@ -12,7 +12,7 @@ static void add_new_fonc_to_wait(vm_t *vm)
     for (size_t i = 0; op_tab[i].hexa_value != 0; i++)
         if (op_tab[i].hexa_value ==
         vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]) {
-            VM_PROCESS_ACTU->cycle_to_wait =  op_tab[i].nbr_cycles;
+            VM_PROCESS_ACTU->cycle_to_wait = op_tab[i].nbr_cycles;
         }
 }
 

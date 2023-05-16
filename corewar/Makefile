@@ -56,8 +56,8 @@ SRC += display_help.c
 
 #=========> TOOLS <========#
 SRC += del_char.c
+SRC += convert_endian.c
 SRC += take_number.c
-SRC += strndup.c
 
 BUILD_DIR	=	../.trash/corewar
 
