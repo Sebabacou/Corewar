@@ -27,6 +27,7 @@
         int pc;
         bool carry;
         bool live;
+        bool in_live;
         size_t nbr_of_process;
         size_t process_actu;
         process_t **process;
@@ -39,6 +40,7 @@
         ssize_t cycle_max;
         size_t cycle_to_die;
         size_t actual_cycle;
+        size_t actual_cycle_for_die;
         champion_t *champion;
         size_t champ_actu;
         size_t nbr_champ;

@@ -11,6 +11,7 @@ static void init_simple_value(vm_t *vm)
 {
     vm->cycle_max = -1;
     vm->cycle_to_die = CYCLE_TO_DIE;
+    vm->actual_cycle_for_die = 0;
     vm->actual_cycle = 0;
     vm->champ_actu = 0;
 }
