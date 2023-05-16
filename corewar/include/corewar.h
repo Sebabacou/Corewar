@@ -15,7 +15,7 @@
     #include "all.h"
 
     typedef struct process_s {
-        size_t cycle_to_wait;
+        ssize_t cycle_to_wait;
         size_t pos_x;
         size_t pos_y;
     }process_t;
@@ -63,6 +63,11 @@
     void my_free(void* to_free);
     void free_champ(champion_t *champion, size_t nbr_champ);
 
+
+    //=========> VM <========//
+    int loop_vm(vm_t *vm);
+    ssize_t launch_fct_vm(vm_t *vm);
+
     //=========> INITIALIZATION <========//
     int init_vm(char **argv, vm_t *vm);
     int check_argv(char **argv, vm_t *vm);
@@ -87,6 +92,6 @@
     char *open_file_nostat(char *filepath);
 
     //=========> FCT-VM <========//
-    void fct_live(champion_t *champion, int i);
+    int fct_live(vm_t *vm, int i);
 
 #endif

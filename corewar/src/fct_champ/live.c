@@ -7,10 +7,10 @@
 
 #include "corewar.h"
 
-int mooving_fct(champion_t *champion, int dist, int proc)
+int mooving_fct(vm_t *vm, int dist, int proc)
 {
-    int x = champion->process[proc]->pos_x;
-    int y = champion->process[proc]->pos_y;
+    int x = VM_CHAMP_ACTU.process[proc]->pos_x;
+    int y = VM_CHAMP_ACTU.process[proc]->pos_y;
 
     for (int len = 0; len < dist; len++) {
         if (x == MEM_X - 1) {
@@ -20,13 +20,14 @@ int mooving_fct(champion_t *champion, int dist, int proc)
         x++;
     }
 
-    champion->process[proc]->pos_x = x;
-    champion->process[proc]->pos_y = y;
+    VM_CHAMP_ACTU.process[proc]->pos_x = x;
+    VM_CHAMP_ACTU.process[proc]->pos_y = y;
     return 0;
 }
 
-void fct_live(champion_t *champion, int i)
+int fct_live(vm_t *vm, int i)
 {
-    champion->live = true;
-    mooving_fct(champion, 5, i);
+    VM_CHAMP_ACTU.live = true;
+    return mooving_fct(vm, 5, i);
+
 }

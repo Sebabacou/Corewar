@@ -17,6 +17,7 @@ VPATH += src/initialization/
 VPATH += src/initialization/vm
 VPATH += src/initialization/champion
 VPATH += src/vm_cpu
+VPATH += src/vm_cpu/manage_action
 VPATH += src/fct_champ
 
 vpath %.c $(VPATH)
@@ -44,6 +45,8 @@ SRC += load_champion_in_vm.c
 
 #=========> VM <========#
 SRC += loop_vm.c
+SRC += check_action.c
+SRC += define_wait_cycle.c
 
 #=========> FCT <========#
 SRC += live.c

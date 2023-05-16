@@ -12,8 +12,9 @@ static int check_win(vm_t *vm)
     size_t verif = 0;
     size_t save_champ_actu = 0;
 
-    for (vm->champ_actu = 0;vm->champ_actu != vm->nbr_champ; vm->champ_actu++) {
-        if (my_strcmp(VM_CHAMP_ACTU.name, DEAD) != 0) {
+    for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
+    vm->champ_actu++) {
+        if (VM_CHAMP_ACTU.in_live == true) {
             save_champ_actu = vm->champ_actu;
             verif++;
         }
@@ -31,18 +32,22 @@ static int check_win(vm_t *vm)
 static void is_alive(vm_t *vm)
 {
     for (vm->champ_actu = 0; VM_CHAMP_ACTU.name != NULL; vm->champ_actu++) {
-        if (my_strcmp(VM_CHAMP_ACTU.name, DEAD) == 0)
+        if (VM_CHAMP_ACTU.in_live == false)
             continue;
         if (VM_CHAMP_ACTU.live == false) {
-            free(VM_CHAMP_ACTU.name);
-            VM_CHAMP_ACTU.name = my_strdup(DEAD);
+            VM_CHAMP_ACTU.in_live = false;
         }
     }
 }
 
-static int check_champ(vm_t)
+static int check_champ(vm_t *vm)
 {
-
+    for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
+    vm->champ_actu++) {
+        if (VM_CHAMP_ACTU.in_live == true)
+            VM_CHAMP_ACTU.carry = launch_fct_vm(vm);
+    }
+    return 0;
 }
 
 int loop_vm(vm_t *vm)
@@ -50,7 +55,7 @@ int loop_vm(vm_t *vm)
     while((ssize_t)vm->actual_cycle != vm->cycle_max) {
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die !=
         vm->cycle_to_die; vm->actual_cycle++, vm->actual_cycle_for_die++) {
-            //TODO : do thing with each process in each champ;
+            check_champ(vm);
         }
         is_alive(vm);
         if (check_win(vm) == 1)

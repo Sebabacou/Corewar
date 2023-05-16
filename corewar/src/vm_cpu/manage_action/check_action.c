@@ -27,20 +27,25 @@ static const action_t action[] = {
         {0, NULL},
 };
 
-int check_in_tab(vm_t *vm, int i)
+int check_in_tab(vm_t *vm, size_t i)
 {
-    for (size_t a = 0; action[a].name != NULL; a++) {
-        if (action[a].name == vm->buffer[VM_CHAMP_ACTU.process[i]->pos_y][VM_CHAMP_ACTU.process[i]->pos_x]) {
-            return action[a].fonk(vm, i);
+    for (size_t a = 0; action[a].name != 0; a++) {
+        if (action[a].name == vm->buffer[VM_CHAMP_ACTU
+        .process[i]->pos_y][VM_CHAMP_ACTU.process[i]->pos_x]) {
+            if (action[a].fonk != NULL)
+                return action[a].fonk(vm, (int)i);
         }
     }
+    return 0;
 }
 
 ssize_t launch_fct_vm(vm_t *vm)
 {
-    for (int i = 0; i < VM_CHAMP_ACTU.nbr_of_process; i++) {
-        if (VM_CHAMP_ACTU.process[i]->cycle_to_wait ==  0) {
+    for (size_t i = 0; i < VM_CHAMP_ACTU.nbr_of_process; i++) {
+        if (VM_CHAMP_ACTU.process[i]->cycle_to_wait == 0) {
             check_in_tab(vm, i);
         }
-    }   
+        VM_CHAMP_ACTU.process[i]->cycle_to_wait--;
+    }
+    return 0;
 }
