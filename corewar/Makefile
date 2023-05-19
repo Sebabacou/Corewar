@@ -17,6 +17,7 @@ VPATH += src/initialization/
 VPATH += src/initialization/vm
 VPATH += src/initialization/champion
 VPATH += src/vm_cpu
+VPATH += src/vm_cpu/manage_action
 VPATH += src/fct_champ
 
 vpath %.c $(VPATH)
@@ -41,20 +42,27 @@ SRC += settings_load_address.c
 SRC += read_champion.c
 SRC += init_startchamp.c
 SRC += load_champion_in_vm.c
+SRC += init_process.c
 
 #=========> VM <========#
 SRC += loop_vm.c
+SRC += check_action.c
+SRC += define_wait_cycle.c
+SRC += get_arg_type.c
+SRC += get_arg_value.c
+SRC += move_pc.c
 
 #=========> FCT <========#
 SRC += live.c
+SRC += fct_sti.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
 
 #=========> TOOLS <========#
 SRC += del_char.c
+SRC += convert_endian.c
 SRC += take_number.c
-SRC += strndup.c
 
 BUILD_DIR	=	../.trash/corewar
 

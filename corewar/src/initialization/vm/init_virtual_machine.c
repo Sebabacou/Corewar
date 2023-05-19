@@ -11,25 +11,26 @@ static void init_simple_value(vm_t *vm)
 {
     vm->cycle_max = -1;
     vm->cycle_to_die = CYCLE_TO_DIE;
+    vm->actual_cycle_for_die = 0;
     vm->actual_cycle = 0;
     vm->champ_actu = 0;
 }
 
 static int init_malloc_value(vm_t *vm)
 {
-    vm->buffer = my_calloc((MEM_X + 1) * sizeof(unsigned char *));
+    vm->buffer = my_calloc((MEM_Y + 1) * sizeof(unsigned char *));
     if (vm->buffer == NULL) {
         free(vm);
         return 84;
     }
-    for (size_t i = 0; i != MEM_X; i++)
-        if ((vm->buffer[i] = my_calloc(MEM_Y * sizeof(unsigned  char))) ==
+    for (size_t i = 0; i != MEM_Y; i++)
+        if ((vm->buffer[i] = my_calloc(MEM_X * sizeof(unsigned  char))) ==
             NULL) {
             free(vm->buffer);
             free(vm);
             return 84;
         }
-    vm->buffer[MEM_X] = NULL;
+    vm->buffer[MEM_Y] = NULL;
     vm->champion = malloc(sizeof(champion_t) * (4 + 1));
     if (vm->champion == NULL) {
         free_all(vm, NONE_C);
@@ -51,7 +52,6 @@ int init_vm(UNUSED char **argv, vm_t *vm)
         free_all(vm, ALL);
         return 84;
     }
-    printf("nbr champ = %ld\n", vm->nbr_champ);
     vm->champ_actu = 0;
     if (VM_PROCESS_ACTU == NULL)
         printf("bam\n");

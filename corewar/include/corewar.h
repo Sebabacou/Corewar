@@ -15,18 +15,20 @@
     #include "all.h"
 
     typedef struct process_s {
-        size_t cycle_to_wait;
+        ssize_t cycle_to_wait;
         size_t pos_x;
         size_t pos_y;
+        unsigned int reg[REG_NUMBER];
+        int pc;
+        bool carry;
+        bool in_live;
     }process_t;
 
     typedef struct champion_s {
         size_t id;
         char *name;
-        unsigned int reg[REG_NUMBER];
-        int pc;
-        bool carry;
         bool live;
+        bool in_live;
         size_t nbr_of_process;
         size_t process_actu;
         process_t **process;
@@ -39,10 +41,16 @@
         ssize_t cycle_max;
         size_t cycle_to_die;
         size_t actual_cycle;
+        size_t actual_cycle_for_die;
         champion_t *champion;
         size_t champ_actu;
         size_t nbr_champ;
     }vm_t;
+
+    typedef struct action_s {
+        unsigned int name;
+        int (*fonk)(vm_t *);
+    } action_t;
 
     typedef struct settings_flag_s {
         char *name;
@@ -55,6 +63,15 @@
     void my_free_array(void **array);
     void my_free(void* to_free);
     void free_champ(champion_t *champion, size_t nbr_champ);
+    unsigned int convert_endian(unsigned int value);
+
+    //=========> VM <========//
+    int loop_vm(vm_t *vm);
+    ssize_t launch_fct_vm(vm_t *vm);
+    int define_wait_cycle(vm_t *vm);
+    int get_arg_type(vm_t *vm, size_t arg_number);
+    size_t get_arg_value(vm_t *vm, size_t x, size_t y, size_t size_to_get);
+    void move_pc(vm_t *vm, int move);
 
     //=========> INITIALIZATION <========//
     int init_vm(char **argv, vm_t *vm);
@@ -64,6 +81,7 @@
     int read_champion(UNUSED vm_t *vm, char *path);
     void setup_start(vm_t *vm);
     int load_champion_in_vm(vm_t *vm);
+    int init_process(vm_t *vm);
 
     //=========> FONCT POINTER <========//
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);
@@ -76,7 +94,9 @@
     //=========> TOOLS <========//
     char *del_char(char *str, char c);
     ssize_t take_number(char *arg);
-    char *my_strdup_shell(char *str, int nbr_byte);
-    char *open_file_nostat(char *filepath);
+
+    //=========> FCT-VM <========//
+    int fct_live(vm_t *vm);
+    int fct_sti(vm_t *vm);
 
 #endif

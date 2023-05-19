@@ -20,6 +20,10 @@ int main(UNUSED int argc, char **argv)
     }
     if (init_vm(argv, vm) != 0)
         return 84;
+    if (vm->nbr_champ == 0 || loop_vm(vm) == 84) {
+        free_all(vm, ALL);
+        return 84;
+    }
     free_all(vm, ALL);
     return 0;
 }
