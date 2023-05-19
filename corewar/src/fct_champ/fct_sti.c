@@ -17,6 +17,8 @@ int fct_sti(vm_t *vm)
     size_t size_arg_three = get_arg_type(vm, 1);
     size_t three = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 3 + size_arg_two,
                             VM_PROCESS_ACTU->pos_y, size_arg_three);
+    VM_PROCESS_ACTU->pc = 3 + size_arg_two + size_arg_three;
+    move_process(vm);
     printf("Champ = %s, %ld\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU.id);
     printf("Action = STI\n");
     printf("arg1 = %ld\n", id_reg);

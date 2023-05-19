@@ -17,8 +17,6 @@ void setup_start(vm_t *vm)
     vm->champ_actu = 0;
     VM_CHAMP_ACTU.process_actu = 0;
     for (int i = 0; i < MEM_Y; i += dif) {
-        printf("pos x = %ld\n", VM_PROCESS_ACTU->pos_x);
-        printf("pos y = %ld\n", VM_PROCESS_ACTU->pos_y);
         if (VM_PROCESS_ACTU->pos_x == 0 && VM_PROCESS_ACTU->pos_y == 0) {
             VM_PROCESS_ACTU->pos_x = 0;
             VM_PROCESS_ACTU->pos_y = i;
