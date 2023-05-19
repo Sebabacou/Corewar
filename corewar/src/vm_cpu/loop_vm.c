@@ -38,7 +38,6 @@ static void is_alive(vm_t *vm)
             continue;
         if (VM_CHAMP_ACTU.live == false)
             VM_CHAMP_ACTU.in_live = false;
-        printf("%s = %d\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU.in_live);
     }
 }
 
@@ -46,17 +45,25 @@ static int check_champ(vm_t *vm)
 {
     for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
     vm->champ_actu++) {
-        if (VM_CHAMP_ACTU.in_live == true)
-            VM_CHAMP_ACTU.carry = launch_fct_vm(vm);
+        if (VM_CHAMP_ACTU.in_live == true) {
+            define_wait_cycle(vm);
+            launch_fct_vm(vm);
+        }
     }
     return 0;
 }
 
 int loop_vm(vm_t *vm)
 {
+    for (size_t i = 0; i != MEM_Y; i++) {
+        for (size_t y = 0; y != MEM_X; y++)
+            printf("%x|", vm->buffer[i][y]);
+        printf("\n");
+    }
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die !=
-        vm->cycle_to_die; vm->actual_cycle++, vm->actual_cycle_for_die++) {
+        vm->cycle_to_die && (ssize_t)vm->actual_cycle != vm->cycle_max;
+        vm->actual_cycle++, vm->actual_cycle_for_die++) {
             check_champ(vm);
         }
         is_alive(vm);

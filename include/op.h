@@ -50,7 +50,6 @@ typedef struct op_s {
     args_type_t  type[MAX_ARGS_NUMBER];
     char         code;
     int          nbr_cycles;
-    int          hexa_value;
     char         *comment;
 } op_t ;
 
@@ -66,90 +65,90 @@ static const op_t op_tab[] =
         {
             "live", 1,
             {T_DIR},
-            1, 10, 0x01,"alive"
+            1, 10,"alive"
             },
             {
             "ld", 2,
             {T_DIR | T_IND, T_REG},
-            2, 5, 0x02,"load"
+            2, 5,"load"
             },
         {
             "st", 2,
             {T_REG, T_IND | T_REG},
-            3, 5, 0x03,"store"
+            3, 5 ,"store"
             },
         {
             "add", 3,
             {T_REG, T_REG, T_REG},
-            4, 10, 0x04,"addition"
+            4, 10 ,"addition"
             },
         {
             "sub", 3,
             {T_REG, T_REG, T_REG},
-            5, 10, 0x05,"soustraction"
+            5, 10 ,"soustraction"
             },
         {
             "and", 3,
             {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG},
-            6, 6, 0x06,"et (and  r1, r2, r3   r1&r2 -> r3"
+            6, 6 ,"et (and  r1, r2, r3   r1&r2 -> r3"
             },
         {
             "or", 3,
             {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
-            7, 6, 0x07,"ou  (or   r1, r2, r3   r1 | r2 -> r3"
+            7, 6 ,"ou  (or   r1, r2, r3   r1 | r2 -> r3"
             },
         {
             "xor", 3,
             {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
-            8, 6, 0x08,"ou (xor  r1, r2, r3   r1^r2 -> r3"
+            8, 6 ,"ou (xor  r1, r2, r3   r1^r2 -> r3"
             },
         {
             "zjmp", 1,
             {T_DIR},
-            9, 20, 0x09,"jump if zero"
+            9, 20 ,"jump if zero"
             },
         {
             "ldi", 3,
             {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
-            10, 25, 0x0a,"load index"
+            10, 25 ,"load index"
             },
         {
             "sti", 3,
             {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG},
-            11, 25, 0x0b,"store index"
+            11, 25 ,"store index"
             },
         {
             "fork", 1,
             {T_DIR},
-            12, 800, 0x0c,"fork"
+            12, 800 ,"fork"
             },
         {
             "lld", 2,
             {T_DIR | T_IND, T_REG},
-            13, 10, 0x0d,"long load"
+            13, 10 ,"long load"
             },
         {
             "lldi", 3,
             {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
-            14, 50, 0x0e,"long load index"
+            14, 50 ,"long load index"
             },
         {
             "lfork", 1,
             {T_DIR},
-            15, 1000, 0x0f,"long fork"
+            15, 1000 ,"long fork"
             },
         {
             "aff", 1,
             {T_REG},
-            16, 2, 0x10,"aff"
+            16, 2 ,"aff"
             },
         {
             0, 0,
             {0},
-            0, 0, 0x00,0
+            0, 0 ,0
             }
         };
-//TODO : ask to aer why miss 16 char
+
     # define PROG_NAME_LENGTH        128 + 16
     # define COMMENT_LENGTH          2048
 
