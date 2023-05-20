@@ -53,5 +53,5 @@ int get_arg_type(vm_t *vm, size_t arg_number)
         return T_DIR;
     if (check_ind(value, arg_number) == true)
         return T_IND;
-    return 84;
+    return 0;
 }

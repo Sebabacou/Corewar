@@ -71,7 +71,8 @@
     int define_wait_cycle(vm_t *vm);
     int get_arg_type(vm_t *vm, size_t arg_number);
     size_t get_arg_value(vm_t *vm, size_t x, size_t y, size_t size_to_get);
-    void move_process(vm_t *vm);
+    void move_process(vm_t *vm, int move);
+    void define_pc(vm_t *vm, int code);
 
     //=========> INITIALIZATION <========//
     int init_vm(char **argv, vm_t *vm);

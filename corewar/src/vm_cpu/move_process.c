@@ -7,9 +7,9 @@
 
 #include "corewar.h"
 
-void move_process(vm_t *vm)
+void move_process(vm_t *vm, int move)
 {
-    size_t x = VM_PROCESS_ACTU->pos_x + VM_PROCESS_ACTU->pc;
+    size_t x = VM_PROCESS_ACTU->pos_x + move;
     size_t y = VM_PROCESS_ACTU->pos_y;
 
     if (x >= MEM_X) {

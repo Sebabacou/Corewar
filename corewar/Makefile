@@ -50,7 +50,8 @@ SRC += check_action.c
 SRC += define_wait_cycle.c
 SRC += get_arg_type.c
 SRC += get_arg_value.c
-SRC += move_pc.c
+SRC += move_process.c
+SRC += define_pc.c
 
 #=========> FCT <========#
 SRC += live.c
