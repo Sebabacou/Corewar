@@ -149,8 +149,8 @@ static const op_t op_tab[] =
             }
         };
 
-    # define PROG_NAME_LENGTH        128 + 16
-    # define COMMENT_LENGTH          2048
+    # define PROG_NAME_LENGTH        128
+    # define COMMENT_LENGTH          2048 + 16
 
 typedef struct header_s {
     int  magic;

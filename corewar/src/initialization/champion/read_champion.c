@@ -24,21 +24,7 @@ static int in_champ_buffer(int fd, vm_t *vm)
     return 0;
 }
 
-static int define_name_champ(char *path, vm_t *vm)
-{
-    char **name = my_str_to_word_array(path, "/");
-    char **final_name = NULL;
-    size_t i = 0;
-
-    for (i = 0; my_str_in_str(name[i], ".cor") != true; i++);
-    final_name = my_str_to_word_array(name[i], ".");
-    VM_CHAMP_ACTU.name = my_strdup(final_name[0]);
-    my_free_array((void **)name);
-    my_free_array((void **)final_name);
-    return 0;
-}
-
-int read_champion(UNUSED vm_t *vm, char *path)
+int read_champion(vm_t *vm, char *path)
 {
     int fd = open(path, O_RDONLY);
 
@@ -48,7 +34,7 @@ int read_champion(UNUSED vm_t *vm, char *path)
         close(fd);
         return 84;
     }
-    define_name_champ(path, vm);
+    define_name_champ(vm);
     close(fd);
     return 0;
 }

@@ -83,6 +83,7 @@
     void setup_start(vm_t *vm);
     int load_champion_in_vm(vm_t *vm);
     int init_process(vm_t *vm);
+    int define_name_champ(vm_t *vm);
 
     //=========> FONCT POINTER <========//
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);
