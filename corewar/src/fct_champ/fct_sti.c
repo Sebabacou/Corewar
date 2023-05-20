@@ -7,6 +7,20 @@
 
 #include "corewar.h"
 
+int do_sti(vm_t *vm, size_t two, size_t three, size_t id_reg)
+{
+    size_t x = VM_PROCESS_ACTU->pos_x + VM_PROCESS_ACTU->pc + two + three;
+    size_t y = VM_PROCESS_ACTU->pos_y;
+
+    if (x >= MEM_X) {
+        y += (x / MEM_X);
+        x %= MEM_X;
+        y %= MEM_Y;
+    }
+    vm->buffer[y][x] = VM_PROCESS_ACTU->reg[id_reg];
+    return 0;
+}
+
 int fct_sti(vm_t *vm)
 {
     size_t id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
@@ -17,6 +31,7 @@ int fct_sti(vm_t *vm)
     size_t size_arg_three = get_arg_type(vm, 1);
     size_t three = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 3 + size_arg_two,
                             VM_PROCESS_ACTU->pos_y, size_arg_three);
+    do_sti(vm, two, three, id_reg);
     move_process(vm, VM_PROCESS_ACTU->pc);
     printf("-------------------------------------------\n");
     printf("Action = STI\n");

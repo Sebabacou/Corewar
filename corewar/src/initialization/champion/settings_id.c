@@ -13,5 +13,6 @@ ssize_t manage_n(char **argv, size_t index, vm_t *vm)
     if (nbr == -1)
         return -1;
     vm->champion[vm->champ_actu].id = nbr;
+    VM_PROCESS_ACTU->reg[1] = nbr;
     return 1;
 }
