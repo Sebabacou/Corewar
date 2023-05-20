@@ -13,10 +13,13 @@ static void add_new_fonc_to_wait(vm_t *vm)
         if (op_tab[i].code ==
         vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]) {
             define_pc(vm, op_tab[i].code);
-            printf("champ = %s, process = %ld, cmd = %s, cycle = %d, pc = "
-            "%d\n",VM_CHAMP_ACTU.name, VM_CHAMP_ACTU.process_actu, op_tab[i]
-            .mnemonique, op_tab[i].nbr_cycles, VM_PROCESS_ACTU->pc);
             VM_PROCESS_ACTU->cycle_to_wait = op_tab[i].nbr_cycles;
+            printf("champ = %s | id = %ld | ", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
+            .id);
+            printf("process = %ld | ", VM_CHAMP_ACTU.process_actu);
+            printf("cmd = %s | ", op_tab[i].mnemonique);
+            printf("cycle_to_wait = %ld | ", VM_PROCESS_ACTU->cycle_to_wait);
+            printf("pc = %d\n", VM_PROCESS_ACTU->pc);
         }
 }
 

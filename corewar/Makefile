@@ -53,10 +53,13 @@ SRC += get_arg_type.c
 SRC += get_arg_value.c
 SRC += move_process.c
 SRC += define_pc.c
+SRC += check_win.c
 
 #=========> FCT <========#
-SRC += live.c
+SRC += fct_live.c
 SRC += fct_sti.c
+SRC += fct_fork.c
+SRC += fct_ld.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c

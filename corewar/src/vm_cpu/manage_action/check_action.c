@@ -9,7 +9,7 @@
 
 static const action_t action[] = {
         {0x01, fct_live},
-        {0x02, NULL},
+        {0x02, fct_ld},
         {0x03, NULL},
         {0x04, NULL},
         {0x05, NULL},
@@ -19,7 +19,7 @@ static const action_t action[] = {
         {0x09, NULL},
         {0x0a, NULL},
         {0x0b, fct_sti},
-        {0x0c, NULL},
+        {0x0c, fct_fork},
         {0x0d, NULL},
         {0x0e, NULL},
         {0x0f, NULL},
@@ -52,6 +52,7 @@ ssize_t launch_fct_vm(vm_t *vm)
 {
     for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
     VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
+//        printf("process_actu = %ld\n", VM_CHAMP_ACTU.process_actu);
         if (VM_PROCESS_ACTU->in_live == true &&
         VM_PROCESS_ACTU->cycle_to_wait == 0) {
             VM_PROCESS_ACTU->carry = check_in_tab(vm);

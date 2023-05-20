@@ -9,12 +9,11 @@
 
 int init_process(vm_t *vm)
 {
-    VM_CHAMP_ACTU.nbr_of_process = 1;
-    VM_CHAMP_ACTU.process_actu = 0;
-    VM_CHAMP_ACTU.process = malloc(sizeof(process_t *) * 2);
+    VM_CHAMP_ACTU.process = realloc(VM_CHAMP_ACTU.process, sizeof(process_t)
+    * (VM_CHAMP_ACTU.nbr_of_process + 1));
+    VM_CHAMP_ACTU.nbr_of_process += 1;
     if (VM_CHAMP_ACTU.process == NULL)
         return 84;
-
     VM_PROCESS_ACTU = malloc(sizeof(process_t));
     if (VM_PROCESS_ACTU == NULL)
         return 84;
@@ -24,7 +23,6 @@ int init_process(vm_t *vm)
     VM_PROCESS_ACTU->in_live = true;
     VM_PROCESS_ACTU->carry = 0;
     VM_PROCESS_ACTU->reg[1] = VM_CHAMP_ACTU.id;
-    VM_PROCESS_ACTU->carry = 0;
     VM_PROCESS_ACTU->pc = 0;
     vm->champion[vm->champ_actu].process[vm->champion[vm->champ_actu]
             .nbr_of_process] = NULL;

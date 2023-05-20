@@ -9,14 +9,15 @@
 
 void move_process(vm_t *vm, int move)
 {
-    size_t x = VM_PROCESS_ACTU->pos_x + move;
-    size_t y = VM_PROCESS_ACTU->pos_y;
+    size_t x = move;
+    size_t y = 0;
 
     if (x >= MEM_X) {
         y += (x / MEM_X);
         x %= MEM_X;
         y %= MEM_Y;
     }
+    y += VM_PROCESS_ACTU->pos_y;
     VM_PROCESS_ACTU->pos_x = x;
     VM_PROCESS_ACTU->pos_y = y;
 }

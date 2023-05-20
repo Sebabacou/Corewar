@@ -73,6 +73,7 @@
     size_t get_arg_value(vm_t *vm, size_t x, size_t y, size_t size_to_get);
     void move_process(vm_t *vm, int move);
     void define_pc(vm_t *vm, int code);
+    int check_win(vm_t *vm);
 
     //=========> INITIALIZATION <========//
     int init_vm(char **argv, vm_t *vm);
@@ -100,5 +101,7 @@
     //=========> FCT-VM <========//
     int fct_live(vm_t *vm);
     int fct_sti(vm_t *vm);
+    int fct_fork(vm_t *vm);
+    int fct_ld(vm_t *vm);
 
 #endif

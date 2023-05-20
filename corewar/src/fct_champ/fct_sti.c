@@ -33,13 +33,5 @@ int fct_sti(vm_t *vm)
                             VM_PROCESS_ACTU->pos_y, size_arg_three);
     do_sti(vm, two, three, id_reg);
     move_process(vm, VM_PROCESS_ACTU->pc);
-    printf("-------------------------------------------\n");
-    printf("Action = STI\n");
-    printf("Champ = %s, %ld\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU.id);
-    printf("arg1 = %ld\n", id_reg);
-    printf("arg2 = %ld\n", two);
-    printf("arg3 = %ld\n", three);
-    printf("len_of_sti = %ld\n", 3 + size_arg_two + size_arg_three);
-    printf("-------------------------------------------\n");
     return 0;
 }
