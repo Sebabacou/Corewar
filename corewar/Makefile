@@ -57,9 +57,22 @@ SRC += check_win.c
 
 #=========> FCT <========#
 SRC += fct_live.c
+SRC += fct_ld.c
+SRC += fct_st.c
+SRC += fct_add.c
+SRC += fct_sti.c
+SRC += fct_sub.c
+SRC += fct_and.c
+SRC += fct_or.c
+SRC += fct_xor.c
+SRC += fct_zjmp.c
+SRC += fct_ldi.c
 SRC += fct_sti.c
 SRC += fct_fork.c
-SRC += fct_ld.c
+SRC += fct_lld.c
+SRC += fct_lldi.c
+SRC += fct_lfork.c
+SRC += fct_aff.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c

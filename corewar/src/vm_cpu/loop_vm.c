@@ -37,6 +37,7 @@ int loop_vm(vm_t *vm)
         printf("\n");
     }
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
+        printf("Cycle to win = %ld\n", vm->cycle_to_die);
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die !=
         vm->cycle_to_die && (ssize_t)vm->actual_cycle != vm->cycle_max;
         vm->actual_cycle++, vm->actual_cycle_for_die++) {

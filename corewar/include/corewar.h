@@ -100,8 +100,20 @@
 
     //=========> FCT-VM <========//
     int fct_live(vm_t *vm);
+    int fct_ld(vm_t *vm);
+    int fct_st(vm_t *vm);
+    int fct_add(vm_t *vm);
+    int fct_sub(vm_t *vm);
+    int fct_and(vm_t *vm);
+    int fct_or(vm_t *vm);
+    int fct_xor(vm_t *vm);
+    int fct_zjmp(vm_t *vm);
+    int fct_ldi(vm_t *vm);
     int fct_sti(vm_t *vm);
     int fct_fork(vm_t *vm);
-    int fct_ld(vm_t *vm);
+    int fct_lld(vm_t *vm);
+    int fct_lldi(vm_t *vm);
+    int fct_lfork(vm_t *vm);
+    int fct_aff(vm_t *vm);
 
 #endif

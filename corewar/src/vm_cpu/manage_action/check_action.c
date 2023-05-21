@@ -10,21 +10,21 @@
 static const action_t action[] = {
         {0x01, fct_live},
         {0x02, fct_ld},
-        {0x03, NULL},
-        {0x04, NULL},
-        {0x05, NULL},
-        {0x06, NULL},
-        {0x07, NULL},
-        {0x08, NULL},
-        {0x09, NULL},
-        {0x0a, NULL},
+        {0x03, fct_st},
+        {0x04, fct_add},
+        {0x05, fct_sub},
+        {0x06, fct_and},
+        {0x07, fct_or},
+        {0x08, fct_xor},
+        {0x09, fct_zjmp},
+        {0x0a, fct_ldi},
         {0x0b, fct_sti},
         {0x0c, fct_fork},
-        {0x0d, NULL},
-        {0x0e, NULL},
-        {0x0f, NULL},
-        {0x10, NULL},
-        {0, NULL},
+        {0x0d, fct_lld},
+        {0x0e, fct_lldi},
+        {0x0f, fct_lfork},
+        {0x10, fct_aff},
+        {0x00, NULL},
 };
 
 int verif_fonct(vm_t *vm, size_t a)
@@ -52,7 +52,6 @@ ssize_t launch_fct_vm(vm_t *vm)
 {
     for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
     VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
-//        printf("process_actu = %ld\n", VM_CHAMP_ACTU.process_actu);
         if (VM_PROCESS_ACTU->in_live == true &&
         VM_PROCESS_ACTU->cycle_to_wait == 0) {
             VM_PROCESS_ACTU->carry = check_in_tab(vm);
