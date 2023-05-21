@@ -9,6 +9,7 @@
 
 static void add_new_fonc_to_wait(vm_t *vm)
 {
+//    printf("%d|\n", vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]);
     for (size_t i = 0; op_tab[i].code != 0; i++) {
 //        printf("y : %ld | x : %ld\n", VM_PROCESS_ACTU->pos_y,
 //               VM_PROCESS_ACTU->pos_x);
@@ -28,10 +29,9 @@ static void add_new_fonc_to_wait(vm_t *vm)
 
 int define_wait_cycle(vm_t *vm)
 {
-    for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
-    VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
-        if (VM_PROCESS_ACTU->cycle_to_wait == -1)
-            add_new_fonc_to_wait(vm);
-    }
+    if (VM_PROCESS_ACTU->cycle_to_wait > -2)
+//        printf("%s = %ld\n", VM_CHAMP_ACTU.name, VM_PROCESS_ACTU->cycle_to_wait);
+    if (VM_PROCESS_ACTU->cycle_to_wait == -1)
+        add_new_fonc_to_wait(vm);
     return 0;
 }

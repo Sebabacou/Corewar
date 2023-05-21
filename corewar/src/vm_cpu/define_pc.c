@@ -19,10 +19,8 @@ static size_t check_len(vm_t *vm)
 void define_pc(vm_t *vm, int code)
 {
     if (code == 1 || code == 9 || code == 12 || code == 15) {
-        VM_PROCESS_ACTU->pc += VM_PROCESS_ACTU->pos_y * MEM_X;
         VM_PROCESS_ACTU->pc += T_DIR + 1;
     } else {
-        VM_PROCESS_ACTU->pc += VM_PROCESS_ACTU->pos_y * MEM_X;
         VM_PROCESS_ACTU->pc += (int) check_len(vm);
     }
 }

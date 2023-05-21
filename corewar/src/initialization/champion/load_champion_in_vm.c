@@ -24,7 +24,10 @@ int load_champion_in_vm(vm_t *vm)
 {
     setup_start(vm);
     vm->champ_actu = 0;
-    for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ; vm->champ_actu++)
+    for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
+    vm->champ_actu++) {
         put_the_champ(vm);
+        VM_PROCESS_ACTU->pc += VM_PROCESS_ACTU->pos_y * MEM_X;
+    }
     return 0;
 }

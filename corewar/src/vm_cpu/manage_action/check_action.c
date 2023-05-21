@@ -50,13 +50,9 @@ int check_in_tab(vm_t *vm)
 
 ssize_t launch_fct_vm(vm_t *vm)
 {
-    for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
-    VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
-        if (VM_PROCESS_ACTU->in_live == true &&
-        VM_PROCESS_ACTU->cycle_to_wait == 0) {
-            VM_PROCESS_ACTU->carry = check_in_tab(vm);
-        }
-        VM_PROCESS_ACTU->cycle_to_wait--;
-    }
+    if (VM_PROCESS_ACTU->in_live == true && VM_PROCESS_ACTU->cycle_to_wait ==
+    0)
+        VM_PROCESS_ACTU->carry = check_in_tab(vm);
+    VM_PROCESS_ACTU->cycle_to_wait--;
     return 0;
 }

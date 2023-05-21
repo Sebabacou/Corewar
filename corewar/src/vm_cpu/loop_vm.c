@@ -7,15 +7,22 @@
 
 #include "corewar.h"
 
+static int check_process(vm_t *vm)
+{
+    for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
+    VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
+        define_wait_cycle(vm);
+        launch_fct_vm(vm);
+    }
+    return 0;
+}
+
 static int check_champ(vm_t *vm)
 {
     for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
-         vm->champ_actu++) {
-        if (VM_CHAMP_ACTU.in_live == true) {
-            define_wait_cycle(vm);
-            launch_fct_vm(vm);
-        }
-    }
+         vm->champ_actu++)
+        if (VM_CHAMP_ACTU.in_live == true)
+            check_process(vm);
     return 0;
 }
 
