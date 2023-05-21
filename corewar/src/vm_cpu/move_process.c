@@ -17,7 +17,8 @@ void move_process(vm_t *vm, int move)
         x %= MEM_X;
         y %= MEM_Y;
     }
-    y += VM_PROCESS_ACTU->pos_y;
+//    printf("add_to_y = %ld\n", y);
+//    y += VM_PROCESS_ACTU->pos_y;
     VM_PROCESS_ACTU->pos_x = x;
     VM_PROCESS_ACTU->pos_y = y;
 }
