@@ -23,14 +23,15 @@ static void add_new_fonc_to_wait(vm_t *vm)
             printf("cmd = %s | ", op_tab[i].mnemonique);
             printf("cycle_to_wait = %ld | ", VM_PROCESS_ACTU->cycle_to_wait);
             printf("pc = %d\n", VM_PROCESS_ACTU->pc);
+            return;
         }
     }
+    printf("[FAIL] = %s -P-> %ld | %d\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
+    .process_actu, vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]);
 }
 
 int define_wait_cycle(vm_t *vm)
 {
-    if (VM_PROCESS_ACTU->cycle_to_wait > -2)
-//        printf("%s = %ld\n", VM_CHAMP_ACTU.name, VM_PROCESS_ACTU->cycle_to_wait);
     if (VM_PROCESS_ACTU->cycle_to_wait == -1)
         add_new_fonc_to_wait(vm);
     return 0;
