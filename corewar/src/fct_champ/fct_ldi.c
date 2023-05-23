@@ -22,7 +22,7 @@ int fct_ldi(vm_t *vm)
 
     S += second_arg;
     VM_PROCESS_ACTU->reg[third_arg] = get_arg_value(vm, VM_PROCESS_ACTU->pc
-    + S % IDX_MOD, 0, REG_SIZE);
+    + (S % IDX_MOD), 0, REG_SIZE);
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }
