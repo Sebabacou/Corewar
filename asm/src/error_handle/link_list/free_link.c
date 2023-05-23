@@ -7,7 +7,7 @@
 
 #include "asm.h"
 
-void free_little(t_command *node)
+static void free_little(t_command *node)
 {
     free(node->command);
     if (node->par_one == NULL)

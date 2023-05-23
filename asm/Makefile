@@ -17,6 +17,7 @@ VPATH += src/init
 VPATH += src/destroy_bomber
 VPATH += src/error_handle/handle_pointer
 VPATH += src/error_handle/link_list
+VPATH += src/tools
 
 vpath %.c $(VPATH)
 
@@ -45,6 +46,9 @@ SRC += reg_in_dir.c
 SRC += free_link.c
 SRC += add_command.c
 SRC += check_labels.c
+SRC += get_arg_size.c
+SRC += prog_size_calculator.c
+SRC += size_coding_bite.c
 
 BUILD_DIR	=	../.trash/asm
 

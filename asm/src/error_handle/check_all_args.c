@@ -8,7 +8,7 @@
 #include "asm.h"
 #include "pointeur_actions.h"
 
-int see_command(char *line, data_t *data)
+static int see_command(char *line, data_t *data)
 {
     char *temp_line = NULL;
     char **sep_line = NULL;

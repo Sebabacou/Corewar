@@ -16,6 +16,7 @@ int main(int argc, char **argv)
         free_all(data);
         return 84;
     }
+    prog_size_calculator(data);
     free_all(data);
     return 0;
 }

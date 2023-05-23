@@ -7,7 +7,7 @@
 
 #include "asm.h"
 
-t_commands *init_commands(void)
+static t_commands *init_commands(void)
 {
     t_commands *commands = malloc(sizeof(t_commands));
 

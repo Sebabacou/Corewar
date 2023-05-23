@@ -7,13 +7,13 @@
 
 #include "asm.h"
 
-void add_values(t_command *node,int i,char **command)
+static void add_values(t_command *node,int i,char **command)
 {
     node->command = my_strdup(command[i]);
     node->par_one = NULL;
     node->par_two = NULL;
     node->par_three = NULL;
-    if (command[i + 1] == NULL 
+    if (command[i + 1] == NULL
     || node->command[my_strlen(node->command) - 1] == ':')
         return;
     node->par_one = my_strdup(command[i + 1]);
@@ -25,7 +25,8 @@ void add_values(t_command *node,int i,char **command)
     node->par_three = my_strdup(command[i + 3]);
 }
 
-void add_link_list(t_command *node,int i, char **command,t_commands *commands)
+static void add_link_list(t_command *node,int i,
+char **command,t_commands *commands)
 {
     add_values(node,i,command);
     if (commands->head == NULL) {
