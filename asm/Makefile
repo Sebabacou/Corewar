@@ -10,11 +10,41 @@ CC 			= 	gcc
 NAME		=	asm
 
 VPATH := src
+VPATH += src/error_handle
+VPATH += src/error_handle/tiret_h
+VPATH += src/manage_file
+VPATH += src/init
+VPATH += src/destroy_bomber
+VPATH += src/error_handle/handle_pointer
+VPATH += src/error_handle/link_list
 
 vpath %.c $(VPATH)
 
 SRC := main.c
-SRC += op.c
+SRC += error_handle.c
+SRC += print_h.c
+SRC += open_read_file.c
+SRC += init_all.c
+SRC += free_all.c
+SRC += take_name.c
+SRC += clean_str.c
+SRC += verif_args.c
+SRC += error_label.c
+SRC += verif_com.c
+SRC += take_add.c
+SRC += take_aff.c
+SRC += take_fork.c
+SRC += take_ld.c
+SRC += take_ldi.c
+SRC += take_live.c
+SRC += take_st.c
+SRC += take_sti.c
+SRC += take_and.c
+SRC += check_all_args.c
+SRC += reg_in_dir.c
+SRC += free_link.c
+SRC += add_command.c
+SRC += add_label.c
 
 BUILD_DIR	=	../.trash/asm
 
@@ -59,7 +89,7 @@ $(BUILD_DIR)/%.o: %.c
 	@ $(ECHO) "$(C_BLUE)[ASM]$(C_RESET) -> $<"
 
 $(NAME):	$(OBJ)
-	@ $(CC) -o $@ $? $(LIB_FLAGS)
+	@ $(CC) -o $@ $(OBJ) $(LIB_FLAGS)
 	@ $(ECHO) "$(C_BLUE)|==========> $(NAME) compiled. <==========|$(C_RESET)"
 
 fclean:
