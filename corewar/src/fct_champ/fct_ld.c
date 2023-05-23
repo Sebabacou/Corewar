@@ -18,16 +18,18 @@ int fct_ld(vm_t *vm)
                             VM_PROCESS_ACTU->pos_y, size_arg_one);
         id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + size_arg_one + 2,
                             VM_PROCESS_ACTU->pos_y, T_REG);
-        VM_PROCESS_ACTU->reg[id_reg] = one;
+        VM_PROCESS_ACTU->reg[id_reg] = get_arg_value(vm, VM_PROCESS_ACTU->pc + (one % IDX_MOD),
+    0, REG_SIZE);
     }
 
     if (size_arg_one == T_IND) {
         one = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
                             VM_PROCESS_ACTU->pos_y, size_arg_one);
+        one = get_arg_value(vm, VM_PROCESS_ACTU->pc + one % IDX_MOD, 0, size_arg_one);
         id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + size_arg_one,
                             VM_PROCESS_ACTU->pos_y, T_REG);
         VM_PROCESS_ACTU->reg[id_reg] = get_arg_value(vm, VM_PROCESS_ACTU->pc + (one % IDX_MOD),
-                            0, T_IND);
+    0, REG_SIZE);
     }
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
