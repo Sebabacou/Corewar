@@ -7,7 +7,7 @@
 
 #include "asm.h"
 
-int verif_register(char *buffer)
+int verif_register(const char *buffer)
 {
     char *temp_buffer = NULL;
 
@@ -27,7 +27,7 @@ int verif_register(char *buffer)
     return 1;
 }
 
-int verif_indirect(char *buffer)
+int verif_indirect(const char *buffer)
 {
     if (buffer == NULL)
         return 1;
@@ -38,7 +38,7 @@ int verif_indirect(char *buffer)
     return 1;
 }
 
-int verif_direct(char *buffer)
+int verif_direct(const char *buffer)
 {
     if (buffer == NULL)
         return 1;

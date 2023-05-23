@@ -57,9 +57,9 @@
     int verif_args(char **buffer, data_t *data);
     int verif_label(char *command);
     int verif_com(char *buffer);
-    int verif_register(char *buffer);
-    int verif_indirect(char *buffer);
-    int verif_direct(char *buffer);
+    int verif_register(const char *buffer);
+    int verif_indirect(const char *buffer);
+    int verif_direct(const char *buffer);
     void free_commands(t_commands *labels);
     void add_commands(t_commands *commands, int i,char **command);
     int check_labels(data_t *data);
