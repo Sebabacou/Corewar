@@ -7,7 +7,7 @@
 
 #include "asm.h"
 
-char *cleant(char *buffer)
+static char *cleant(char *buffer)
 {
     for (int i = 0;buffer[i] != '\0';i++) {
         if (buffer[i] == '\t')
@@ -16,7 +16,7 @@ char *cleant(char *buffer)
     return buffer;
 }
 
-char *clean_virgule(char *buffer)
+static char *clean_virgule(char *buffer)
 {
     for (int i = 0;buffer[i] != '\0';i++) {
         if (buffer[i] == ',')

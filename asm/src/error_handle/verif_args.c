@@ -8,7 +8,7 @@
 #include "asm.h"
 #include "pointeur_actions.h"
 
-int make_pointer(char *buffer,data_t *data, int i,char **full_command)
+static int make_pointer(char *buffer,data_t *data, int i,char **full_command)
 {
     int (*fonc)(char **, int,data_t *);
 
@@ -22,11 +22,11 @@ int make_pointer(char *buffer,data_t *data, int i,char **full_command)
     return 1;
 }
 
-int loop_arg(char **buffer, data_t *data, int i)
+static int loop_arg(char **buffer, data_t *data, int i)
 {
     if (verif_label(buffer[i]) == 1 && data->error_lab == 0) {
         data->error_lab = 1;
-        add_labels(data->labels,i,buffer);
+        add_commands(data->commands,i,buffer);
         return 0;
     }
     if (verif_com(buffer[i]) == 0 && data->com == 0)
