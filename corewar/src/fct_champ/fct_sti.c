@@ -33,14 +33,13 @@ int fct_sti(vm_t *vm)
     size_t x = 0;
     size_t y = 0;
 //    printf("%ld | %ld\n", size_arg_two, size_arg_three);
-    if (size_arg_two == T_REG || size_arg_two == T_IND) {
-        if (size_arg_two == T_REG)
-            two = VM_PROCESS_ACTU->reg[two];
-        if (size_arg_two == T_IND) {
-            create_x_y_form_value((int *)&x, (int *)&y, VM_PROCESS_ACTU->pc +
-            two);
-            two = vm->buffer[y][x];
-        }
+
+    if (size_arg_two == T_REG)
+        two = VM_PROCESS_ACTU->reg[two];
+    if (size_arg_two == T_IND) {
+        create_x_y_form_value((int *)&x, (int *)&y, VM_PROCESS_ACTU->pc +
+        two % IDX_MOD);
+        two = vm->buffer[y][x];
     }
     if (size_arg_three == T_REG)
         two = VM_PROCESS_ACTU->reg[three];

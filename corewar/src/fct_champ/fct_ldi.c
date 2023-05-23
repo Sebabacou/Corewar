@@ -19,7 +19,12 @@ int fct_ldi(vm_t *vm)
     arg_one_size + arg_size_two, VM_PROCESS_ACTU->pos_y,T_REG);
     size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + (first_arg % IDX_MOD), 0,
                              IND_SIZE);
-
+    if (arg_one_size == T_REG)
+        first_arg = VM_PROCESS_ACTU->reg[first_arg];
+    if (arg_one_size == T_IND)
+        first_arg = VM_PROCESS_ACTU->pc + first_arg % IDX_MOD;
+    if (arg_size_two == T_REG)
+        second_arg = VM_PROCESS_ACTU->reg[first_arg];
     S += second_arg;
     VM_PROCESS_ACTU->reg[third_arg] = get_arg_value(vm, VM_PROCESS_ACTU->pc
     + (S % IDX_MOD), 0, REG_SIZE);
