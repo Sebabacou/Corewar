@@ -98,6 +98,7 @@
     char *del_char(char *str, char c);
     ssize_t take_number(char *arg);
     int *new_pos(vm_t *vm, int dist);
+    void create_x_y_form_value(int *x ,int *y , int value);
 
     //=========> FCT-VM <========//
     int fct_live(vm_t *vm);

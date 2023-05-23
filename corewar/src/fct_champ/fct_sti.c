@@ -9,14 +9,11 @@
 
 int do_sti(vm_t *vm, size_t two, size_t three, size_t id_reg)
 {
-    size_t x = VM_PROCESS_ACTU->pos_x + VM_PROCESS_ACTU->pc + two + three;
-    size_t y = VM_PROCESS_ACTU->pos_y;
+    size_t x = 0;
+    size_t y = 0;
 
-    if (x >= MEM_X) {
-        y += (x / MEM_X);
-        x %= MEM_X;
-        y %= MEM_Y;
-    }
+    create_x_y_form_value((int *)&x, (int *)&y, VM_PROCESS_ACTU->pc + two +
+    three);
     vm->buffer[y][x] = VM_PROCESS_ACTU->reg[id_reg];
     return 0;
 }

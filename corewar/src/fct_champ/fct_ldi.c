@@ -9,37 +9,20 @@
 
 int fct_ldi(vm_t *vm)
 {
-    int *tab;
-    size_t tmp = 0;
-    int dist = 0;
+    size_t arg_one_size = get_arg_type(vm, 4);
+    size_t first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
+                                     VM_PROCESS_ACTU->pos_y,arg_one_size);
+    size_t arg_size_two = get_arg_type(vm, 3);
+    size_t second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + arg_one_size,
+                                      VM_PROCESS_ACTU->pos_y, arg_size_two);
+    size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
+    arg_one_size + arg_size_two, VM_PROCESS_ACTU->pos_y,T_REG);
+    size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + first_arg, 0, IND_SIZE);
 
-    // prend le 1er argument
-    size_t arg_size = get_arg_type(vm, 4);
-    tab = new_pos(vm, 2);
-    size_t first_arg = get_arg_value(vm, tab[0], tab[1], arg_size);
-    
-    // prend le deuxième et stock la position dans pos
-    tab = new_pos(vm, 2 + arg_size);
-    tmp = 2 + arg_size;
-    arg_size = get_arg_type(vm, 3);
-    size_t second_arg = get_arg_value(vm, tab[0], tab[1], arg_size);
-    
-    //prend le troisième argument et stock la position 
-    tab = new_pos(vm, tmp + arg_size);
-    arg_size = get_arg_type(vm, 2);
-    size_t third_arg = get_arg_value(vm, tab[0], tab[1], arg_size);
+    S += second_arg;
+    VM_PROCESS_ACTU->reg[third_arg] = get_arg_value(vm, VM_PROCESS_ACTU->pc
+    + S, 0, REG_SIZE);
 
-    // calcul la valeur de IND_SIZE à l'addresse PC + first arg % IDX_MOD
-    dist = VM_PROCESS_ACTU->pc + first_arg % IDX_MOD;
-    tab = new_pos(vm, dist);
-    size_t S = get_arg_value(vm, tab[0], tab[1], IND_SIZE);
-
-    // trouve la valeur final, read PC + resultat précedent % IDX_MOD et copie dans r1
-    dist = VM_PROCESS_ACTU->pc + S % IDX_MOD;
-    tab = new_pos(vm, dist);
-    size_t res = get_arg_value(vm, tab[0], tab[1], REG_SIZE);
-
-    VM_PROCESS_ACTU->reg[1] = res;
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }

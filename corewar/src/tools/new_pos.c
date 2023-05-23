@@ -17,7 +17,7 @@ int *new_pos(vm_t *vm, int dist)
         } else {
             tab[1]++;
             tab[0] = 0;
-        }          
+        }
     }
     return tab;
 }
