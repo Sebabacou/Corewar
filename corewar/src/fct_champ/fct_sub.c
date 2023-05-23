@@ -25,5 +25,4 @@ int fct_sub(vm_t *vm)
     VM_PROCESS_ACTU->reg[third_arg] = VM_PROCESS_ACTU->reg[first_arg] - VM_PROCESS_ACTU->reg[second_arg];
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
-    return 0;
 }

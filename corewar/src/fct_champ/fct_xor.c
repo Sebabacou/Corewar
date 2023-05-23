@@ -20,11 +20,18 @@ int fct_xor(vm_t *vm)
     size_t arg_size_three = get_arg_type(vm, 2);
     size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + size_arg_one + arg_size_two,
                                       VM_PROCESS_ACTU->pos_y, arg_size_three);
-    
 
-//    size_t third_reg = get_arg_value(vm, tab[0], tab[1], T_REG);
-    VM_PROCESS_ACTU->reg[third_arg] = VM_PROCESS_ACTU->reg[first_arg] ^ VM_PROCESS_ACTU->reg[second_arg];
+    if (size_arg_one == T_IND)
+        first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pc + first_arg % 
+IDX_MOD, 0, T_IND);
+    if (size_arg_one == T_REG)
+        first_arg = VM_PROCESS_ACTU->reg[first_arg];
+    if (arg_size_two == T_IND)
+        second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pc + second_arg % 
+IDX_MOD, 0, T_IND);
+    if (arg_size_two == T_REG)
+        second_arg = VM_PROCESS_ACTU->reg[second_arg];
+    VM_PROCESS_ACTU->reg[third_arg] = first_arg ^ second_arg;
     move_process(vm, VM_PROCESS_ACTU->pc);
-    return 0;
     return 0;
 }
