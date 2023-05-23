@@ -11,6 +11,7 @@ int fct_fork(vm_t *vm)
 {
     size_t parameter = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 1,
                                   VM_PROCESS_ACTU->pos_y, T_DIR);
+
     VM_CHAMP_ACTU.process_actu++;
     init_process(vm);
     move_process(vm, VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu -

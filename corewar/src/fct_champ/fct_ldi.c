@@ -17,7 +17,7 @@ int fct_ldi(vm_t *vm)
                                       VM_PROCESS_ACTU->pos_y, arg_size_two);
     size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
     arg_one_size + arg_size_two, VM_PROCESS_ACTU->pos_y,T_REG);
-    size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + first_arg % IDX_MOD, 0,
+    size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + (first_arg % IDX_MOD), 0,
                              IND_SIZE);
 
     S += second_arg;
