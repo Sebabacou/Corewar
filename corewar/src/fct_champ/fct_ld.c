@@ -4,12 +4,6 @@
 ** File description:
 ** fct_ld.c
 */
-/*
-** EPITECH PROJECT, 2023
-** corwar
-** File description:
-** fct_sti.c
-*/
 
 #include "corewar.h"
 
