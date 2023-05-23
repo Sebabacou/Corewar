@@ -44,7 +44,7 @@ SRC += check_all_args.c
 SRC += reg_in_dir.c
 SRC += free_link.c
 SRC += add_command.c
-SRC += add_label.c
+SRC += check_labels.c
 
 BUILD_DIR	=	../.trash/asm
 

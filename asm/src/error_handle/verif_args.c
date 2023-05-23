@@ -26,7 +26,7 @@ int loop_arg(char **buffer, data_t *data, int i)
 {
     if (verif_label(buffer[i]) == 1 && data->error_lab == 0) {
         data->error_lab = 1;
-        add_labels(data->labels,i,buffer);
+        add_commands(data->commands,i,buffer);
         return 0;
     }
     if (verif_com(buffer[i]) == 0 && data->com == 0)

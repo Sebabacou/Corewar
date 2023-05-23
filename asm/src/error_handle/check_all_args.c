@@ -36,5 +36,7 @@ int check_all_args(data_t *data)
         if (see_command(data->champion_data[indice], data) == 1)
             return 1;
     }
+    if (check_labels(data) == 1)
+        return 1;
     return 0;
 }

@@ -7,26 +7,11 @@
 
 #include "asm.h"
 
-void free_labels(t_labels *labels)
-{
-    t_label *temp_node = labels->head;
-    t_label *next = NULL;
-
-    if (temp_node == NULL)
-        return;
-    for (;temp_node->next != NULL;temp_node = next) {
-        next = temp_node->next;
-        free(temp_node->label);
-        free(temp_node);
-    }
-    free(temp_node->label);
-    free(temp_node);
-    return;
-}
-
 void free_little(t_command *node)
 {
     free(node->command);
+    if (node->par_one == NULL)
+        return;
     free(node->par_one);
     if (node->par_two == NULL)
         return;

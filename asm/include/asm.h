@@ -11,16 +11,6 @@
 
 
 //<------------------------- link_list ------------------->
-    typedef struct label{
-        char *label;
-        struct label *next;
-        struct label *prev;
-    } t_label;
-
-    typedef struct labels {
-        t_label *head;
-        t_label *tail;
-    } t_labels;
 
     typedef struct command {
         char *command;
@@ -43,7 +33,6 @@
         int error_lab;
         int com;
         int arg_size;
-        t_labels *labels;
         t_commands *commands;
     } data_t;
 
@@ -71,8 +60,7 @@
     int verif_register(char *buffer);
     int verif_indirect(char *buffer);
     int verif_direct(char *buffer);
-    void free_labels(t_labels *labels);
     void free_commands(t_commands *labels);
     void add_commands(t_commands *commands, int i,char **command);
-    void add_labels(t_labels *labels, int i,char **label);
+    int check_labels(data_t *data);
 #endif
