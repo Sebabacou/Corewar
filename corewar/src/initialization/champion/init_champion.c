@@ -16,7 +16,7 @@ static int champ_init_value(vm_t *vm)
     VM_CHAMP_ACTU.process_actu = 0;
     VM_CHAMP_ACTU.nbr_of_process = 0;
     VM_CHAMP_ACTU.process = malloc(sizeof(process_t *));
-    vm->champion[vm->champ_actu].id = vm->champ_actu;
+    vm->champion[vm->champ_actu].id = vm->champ_actu + 1;
     return init_process(vm);
 }
 

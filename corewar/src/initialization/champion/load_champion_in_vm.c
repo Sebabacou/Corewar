@@ -14,7 +14,8 @@ static void put_the_champ(vm_t *vm)
             COMMENT_LENGTH;
     VM_CHAMP_ACTU.process_actu = 0;
     for (size_t y = VM_PROCESS_ACTU->pos_y; y != MEM_Y && pos < stop; y++) {
-        for (size_t x = 0; x != MEM_X && pos < stop; x++, pos++) {
+        for (size_t x = VM_PROCESS_ACTU->pos_x; x != MEM_X && pos < stop; x++,
+                pos++) {
             vm->buffer[y][x] = VM_CHAMP_ACTU.buffer[pos];
         }
     }
