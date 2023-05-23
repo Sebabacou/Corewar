@@ -18,5 +18,5 @@ void create_x_y_form_value(int *x ,int *y , int value)
         y_temp %= MEM_Y;
     }
     (*x) = x_temp;
-    (*y) = y_temp
+    (*y) = y_temp;
 }
