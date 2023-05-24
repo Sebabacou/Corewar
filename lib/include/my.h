@@ -71,4 +71,5 @@
     size_t my_count_char(char const *str, char c);
     char *my_array_to_str_separator(char const **array, char const *separator);
     char my_get_last_char(char const *str, char const *skip_char);
+    char *my_strcat_free(char *dest, char *src, char free_dest, char free_src);
 #endif /* _MY_H_ */

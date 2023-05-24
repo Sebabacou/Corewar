@@ -17,6 +17,7 @@ VPATH += src/init
 VPATH += src/destroy_bomber
 VPATH += src/error_handle/handle_pointer
 VPATH += src/error_handle/link_list
+VPATH += src/header
 
 vpath %.c $(VPATH)
 
@@ -45,6 +46,8 @@ SRC += reg_in_dir.c
 SRC += free_link.c
 SRC += add_command.c
 SRC += check_labels.c
+SRC += fill_read_header.c
+SRC += get_filename.c
 
 BUILD_DIR	=	../.trash/asm
 

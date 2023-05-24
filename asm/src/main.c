@@ -16,6 +16,8 @@ int main(int argc, char **argv)
         free_all(data);
         return 84;
     }
+    if (fill_read_header(data, argv[1]) == 84)
+        return 84;
     free_all(data);
     return 0;
 }
