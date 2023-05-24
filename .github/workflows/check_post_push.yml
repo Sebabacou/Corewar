@@ -9,7 +9,7 @@ on:
 
 env:
   MIRROR_URL: git@github.com:EpitechPromo2027/B-PSU-200-REN-2-1-minishell2-tom.lefoix.git
-  EXECUTABLES: 42sh
+  EXECUTABLES: "asm/asm, corewar/corewar"
 
 jobs:
   check_coding_style:
@@ -49,9 +49,9 @@ jobs:
         make clean
     - name: checking binary exist
       run: |
-        if [ -f ${{ env.EXECUTABLES }} ]; then
-            exit 0
-        else 
-            echo "::error file=${{ env.EXECUTABLES }},title="Binary"::Binary not found"
+        for exec in $(echo "${{ env.EXECUTABLES}}" | tr "," " "); do
+          if [ ! -f "$exec" ]; then
+            echo "::error file=$exec,title=Binary::Binary not found"
             exit 1
-        fi
+          fi
+        done
