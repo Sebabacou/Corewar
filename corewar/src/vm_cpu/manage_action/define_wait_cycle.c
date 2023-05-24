@@ -17,7 +17,7 @@ static void add_new_fonc_to_wait(vm_t *vm)
             vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]) {
             define_pc(vm, op_tab[i].code);
             VM_PROCESS_ACTU->cycle_to_wait = op_tab[i].nbr_cycles;
-            printf("champ = %s | id = %ld | ", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
+            printf("CHAMP = %s | id = %ld | ", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
                     .id);
             printf("process = %ld | ", VM_CHAMP_ACTU.process_actu);
             printf("cmd = %s | ", op_tab[i].mnemonique);
@@ -32,7 +32,7 @@ static void add_new_fonc_to_wait(vm_t *vm)
         }
     }
     VM_PROCESS_ACTU->in_live = false;
-    printf("[FAIL] = %s -P-> %ld | %d\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
+    printf("[DEAD] = %s -P-> %ld | %d\n", VM_CHAMP_ACTU.name, VM_CHAMP_ACTU
     .process_actu, vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]);
 }
 

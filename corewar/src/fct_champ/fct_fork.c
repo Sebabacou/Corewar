@@ -15,15 +15,16 @@ int fct_fork(vm_t *vm)
     VM_CHAMP_ACTU.process_actu++;
     init_process(vm);
     move_process(vm, VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu -
-    1]->pc + parameter);
-    printf("%ld\n", VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu - 1]->pc
-    + parameter);
-    printf("%ld,%ld\n", VM_PROCESS_ACTU->pos_y, VM_PROCESS_ACTU->pos_x);
-    printf("%x\n", vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU->pos_x]);
-    printf("%d\n", VM_PROCESS_ACTU->pc);
+    1]->pc + parameter % IDX_MOD);
     VM_PROCESS_ACTU->pc = VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu -
-                                                1]->pc + parameter;
-    printf("%d\n", VM_PROCESS_ACTU->pc);
+                                                1]->pc + parameter % IDX_MOD;
+    printf("FORK : ");
+    printf("PC to go = %ld -> %ld,%ld | ", VM_CHAMP_ACTU.process[VM_CHAMP_ACTU
+    .process_actu - 1]->pc + parameter, VM_PROCESS_ACTU->pos_y,
+           VM_PROCESS_ACTU->pos_x);
+    printf("value of %x | ", vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU
+    ->pos_x]);
+    printf("pos of new process = %d\n", VM_PROCESS_ACTU->pc);
     VM_CHAMP_ACTU.process_actu--;
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
