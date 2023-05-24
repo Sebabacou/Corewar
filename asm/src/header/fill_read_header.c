@@ -47,7 +47,6 @@ header_t fill_header(void)
     for (size_t i = 0; i < COMMENT_LENGTH; i++)
         header.comment[i] = '\0';
     header.magic = htobe32(COREWAR_EXEC_MAGIC);
-    header.prog_size = htobe32(22);
     return header;
 
 }
@@ -69,10 +68,11 @@ int fill_read_header(data_t *data, char const *filename)
     char *comment = get_info(".comment", AC data->champion_data);
     header_t header = fill_header();
 
-    if (name == NULL || comment == NULL)
-        return 84;
+//    if (name == NULL || comment == NULL)
+//        return 84;
     my_strcpy(header.prog_name, name);
     my_strcpy(header.comment, comment);
+    header.prog_size = htobe32(prog_size_calculator(data));
     free(name);
     free(comment);
     if ((data->path = get_filename(filename)) == NULL)

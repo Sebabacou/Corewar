@@ -18,7 +18,6 @@ int main(int argc, char **argv)
     }
     if (fill_read_header(data, argv[1]) == 84)
         return 84;
-    prog_size_calculator(data);
     free_all(data);
     return 0;
 }
