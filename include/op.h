@@ -63,7 +63,7 @@
 /*
 ** op_tab
 */
-    extern op_t op_tab[];
+    extern const op_t op_tab[];
 
 /*
 ** header

@@ -19,6 +19,7 @@ VPATH += src/error_handle/handle_pointer
 VPATH += src/error_handle/link_list
 VPATH += src/header
 VPATH += src/tools
+VPATH += src/write
 
 vpath %.c $(VPATH)
 
@@ -52,6 +53,10 @@ SRC += prog_size_calculator.c
 SRC += size_coding_bite.c
 SRC += fill_read_header.c
 SRC += get_filename.c
+SRC += op.c
+SRC += write_instruction.c
+SRC += write_conding_byte.c
+SRC += write_params.c
 
 BUILD_DIR	=	../.trash/asm
 
@@ -59,7 +64,7 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS) -g
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\
