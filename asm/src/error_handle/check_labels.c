@@ -7,13 +7,13 @@
 
 #include "asm.h"
 
-void lit_free(char *temp_par,char *temp_command)
+static void lit_free(char *temp_par,char *temp_command)
 {
     free(temp_par);
     free(temp_command);
 }
 
-int existing_label(char *par, data_t *data)
+static int existing_label(char *par, data_t *data)
 {
     t_command *node = data->commands->head;
     char *temp_par = NULL;
@@ -37,27 +37,28 @@ int existing_label(char *par, data_t *data)
     return 1;
 }
 
-int check_par(t_command *node, data_t *data)
+static int check_par(t_command *node, data_t *data)
 {
-    if (node->par_one == NULL)
-        return 0;
-    if (verif_direct(node->par_one) == 0 || verif_indirect(node->par_one) ==0) {
+    if (node->par_one == NULL) return 0;
+    if (verif_direct(node->par_one) == 0
+    || verif_indirect(node->par_one) == 0) {
         if (existing_label(node->par_one, data) == 1)
             return 1;
     }
     if (node->par_two == NULL)
         return 0;
-    if (verif_direct(node->par_two) == 0 || verif_indirect(node->par_two) ==0) {
+    if (verif_direct(node->par_two) == 0
+    || verif_indirect(node->par_two) == 0) {
         if (existing_label(node->par_two, data) == 1)
             return 1;
     }
     if (node->par_three == NULL)
         return 0;
-    if (verif_direct(node->par_three) == 0 || verif_indirect(node->par_three) ==0) {
+    if (verif_direct(node->par_three) == 0
+    || verif_indirect(node->par_three) == 0) {
         if (existing_label(node->par_three, data) == 1)
             return 1;
-    }
-    return 0;
+    } return 0;
 }
 
 int check_labels(data_t *data)
@@ -65,7 +66,6 @@ int check_labels(data_t *data)
     t_command *node = data->commands->head;
 
     for (;node != NULL;node = node->next) {
-        printf("command = %s\n",node->command);
         if (check_par(node, data) == 1)
             return 1;
     }

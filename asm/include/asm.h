@@ -36,6 +36,8 @@
         int com;
         int arg_size;
         char *path;
+        int name;
+        int comment;
         t_commands *commands;
     } data_t;
 
@@ -66,7 +68,10 @@
     void free_commands(t_commands *labels);
     void add_commands(t_commands *commands, int i,char **command);
     int check_labels(data_t *data);
+    int get_arg_size(t_command *node);
+    int prog_size_calculator(data_t *data);
+    int size_coding_bite(char *command);
 //<-------------------------- Print function ------------------------------>
-int fill_read_header(data_t *data, char const *filename);
-char *get_filename(char const *filename);
+    int fill_read_header(data_t *data, char const *filename);
+    char *get_filename(char const *filename);
 #endif
