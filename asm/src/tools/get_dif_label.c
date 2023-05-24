@@ -41,16 +41,18 @@ int check_label_after(t_command *node, char *buffer)
     return 0;
 }
 
-int get_dif_label(t_command *node, char *buffer)
+int get_dif_label(t_command *node, char const *buffer)
 {
-    int res = 0;
+    int res;
     char *temp_buffer = NULL;
 
-    temp_buffer = my_clean_string(buffer, "%:", 0);
+    temp_buffer = my_clean_string((char *)buffer, "%:", 0);
     if ((res = check_label_before(node, temp_buffer)) != 1) {
         free(temp_buffer);
+        my_printf("size : %i\n", res);
         return res;
     }
-    res = check_labels_after(node, temp_buffer);
+    res = check_label_after(node, temp_buffer);
+    my_printf("size : %i\n", res);
     return res;
 }

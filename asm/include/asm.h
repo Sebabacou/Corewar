@@ -72,7 +72,7 @@
     int prog_size_calculator(data_t *data);
     int size_coding_bite(char *command);
     int verif_index(t_command *node,int i);
-    int get_dif_label(t_command *node, char *buffer);
+    int get_dif_label(t_command *node, char const *buffer);
 //<-------------------------- Print function ------------------------------>
     int fill_read_header(data_t *data, char const *filename);
     char *get_filename(char const *filename);
