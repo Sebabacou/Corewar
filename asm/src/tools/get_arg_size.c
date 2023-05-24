@@ -28,7 +28,7 @@ int verif_indexs(int i,int y)
     return 1;
 }
 
-static int verif_index(t_command *node,int i)
+int verif_index(t_command *node,int i)
 {
     int res = 1;
 

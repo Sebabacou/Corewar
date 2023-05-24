@@ -9,3 +9,5 @@ asm/champions/
 *.s
 *.cor
 corewar
+lui
+moi

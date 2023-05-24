@@ -10,7 +10,7 @@
 #include "op.h"
 #include "asm.h"
 
-char *get_string(char const *info)
+static char *get_string(char const *info)
 {
     char **tmp = my_str_to_word_array(info, "\"");
     char *content;
@@ -22,7 +22,7 @@ char *get_string(char const *info)
     return content;
 }
 
-char *get_info(char const *search, char const **info)
+static char *get_info(char const *search, char const **info)
 {
     int len = my_strlen(search);
     char *clean;
@@ -38,20 +38,21 @@ char *get_info(char const *search, char const **info)
     return NULL;
 }
 
-header_t fill_header(void)
+static header_t fill_header(void)
 {
     header_t header;
 
-    for (size_t i = 0; i < PROG_NAME_LENGTH; i++)
+    my_memset(&header, 0, sizeof(header_t));
+    for (size_t i = 0; i <= PROG_NAME_LENGTH; i++)
         header.prog_name[i] = '\0';
-    for (size_t i = 0; i < COMMENT_LENGTH; i++)
+    for (size_t i = 0; i <= COMMENT_LENGTH; i++)
         header.comment[i] = '\0';
     header.magic = htobe32(COREWAR_EXEC_MAGIC);
     return header;
 
 }
 
-int read_header(data_t *data, header_t header)
+static int write_header(data_t *data, header_t header)
 {
     FILE *fd = fopen(data->path, "w+");
 
@@ -68,8 +69,7 @@ int fill_read_header(data_t *data, char const *filename)
     char *comment = get_info(".comment", AC data->champion_data);
     header_t header = fill_header();
 
-//    if (name == NULL || comment == NULL)
-//        return 84;
+
     my_strcpy(header.prog_name, name);
     my_strcpy(header.comment, comment);
     header.prog_size = htobe32(prog_size_calculator(data));
@@ -77,5 +77,5 @@ int fill_read_header(data_t *data, char const *filename)
     free(comment);
     if ((data->path = get_filename(filename)) == NULL)
         return 84;
-    return read_header(data, header);
+    return write_header(data, header);
 }

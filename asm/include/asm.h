@@ -71,7 +71,11 @@
     int get_arg_size(t_command *node);
     int prog_size_calculator(data_t *data);
     int size_coding_bite(char *command);
+    int verif_index(t_command *node,int i);
 //<-------------------------- Print function ------------------------------>
     int fill_read_header(data_t *data, char const *filename);
     char *get_filename(char const *filename);
+    void write_coding_byte(t_command *node, FILE *fd);
+    int write_instruction(data_t *data);
+    void write_params(t_command *node, FILE *fd);
 #endif

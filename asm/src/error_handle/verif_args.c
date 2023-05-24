@@ -47,6 +47,8 @@ int verif_args(char **buffer, data_t *data)
     data->arg_size = 0;
     data->com = 1;
     data->error_lab = 0;
+    data->comment = 0;
+    data->name = 0;
     for (int i = 0;buffer[i] != NULL;i++) {
         if (data->com == 0)
             return 0;

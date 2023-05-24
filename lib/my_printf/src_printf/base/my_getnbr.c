@@ -14,6 +14,8 @@ int my_getnbr(char const *str)
     long int n = 0;
     int check = 0;
 
+    if (str == NULL)
+        return 0;
     for (int i = 0; (str[i] < '0' || str[i] > '9') && str[i]; i++)
         if (str[i] == '-')
             neg = neg * (-1);
@@ -23,5 +25,5 @@ int my_getnbr(char const *str)
         if (check != 0 && n < 2147483647)
             return (n * neg);
     }
-    return -898998;
+    return 0;
 }
