@@ -8,5 +8,4 @@ coding-style-reports.log
 asm/champions/
 *.s
 *.cor
-asm
 corewar
