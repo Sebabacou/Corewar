@@ -20,7 +20,7 @@ static int existing_label(char *par, data_t *data)
     char *temp_command = NULL;
 
     temp_par = my_clean_string(par, "%:", 0);
-    if (my_str_isnum(temp_par) == 1) {
+    if (my_str_isnum(temp_par) == 1 || temp_par[0] == '-') {
         free(temp_par);
         return 0;
     }

@@ -36,7 +36,7 @@ static int loop_arg(char **buffer, data_t *data, int i)
         return 0;
     }
     if (verif_com(buffer[i]) == 0 && data->com == 1)
-            return 0;
+        return 0;
     return 1;
 }
 
@@ -48,6 +48,8 @@ int verif_args(char **buffer, data_t *data)
     data->com = 1;
     data->error_lab = 0;
     for (int i = 0;buffer[i] != NULL;i++) {
+        if (data->com == 0)
+            return 0;
         if (loop_arg(buffer, data, i) == 1) {
             return 1;
         }

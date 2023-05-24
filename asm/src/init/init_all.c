@@ -22,5 +22,7 @@ void init_all(data_t *data)
     data->error_lab = 0;
     data->com = 1;
     data->arg_size = 0;
+    data->name = 0;
+    data->comment = 0;
     data->commands = init_commands();
 }

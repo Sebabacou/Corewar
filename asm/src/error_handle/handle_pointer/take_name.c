@@ -13,7 +13,7 @@ int check_name_comment(data_t *data,char **buffer,int i)
         data->comment = 1;
         return 0;
     }
-    if (my_strcmp(".name", buffer[i]) == 0 && data->comment == 0) {
+    if (my_strcmp(".name", buffer[i]) == 0 && data->name == 0) {
         data->name = 1;
         return 0;
     }
@@ -39,7 +39,8 @@ int take_name(char **line,int i,data_t *data)
         if (line[y][0] == '#')
             return 1;
     }
-    check_name_comment(data,line,i);
+    if (check_name_comment(data,line,i) == 1)
+        return 1;
     i++;
     for (;line[i] != NULL;i++) {
         count++;
