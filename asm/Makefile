@@ -17,7 +17,9 @@ VPATH += src/init
 VPATH += src/destroy_bomber
 VPATH += src/error_handle/handle_pointer
 VPATH += src/error_handle/link_list
+VPATH += src/header
 VPATH += src/tools
+VPATH += src/write
 
 vpath %.c $(VPATH)
 
@@ -49,6 +51,13 @@ SRC += check_labels.c
 SRC += get_arg_size.c
 SRC += prog_size_calculator.c
 SRC += size_coding_bite.c
+SRC += fill_read_header.c
+SRC += get_filename.c
+SRC += op.c
+SRC += write_instruction.c
+SRC += write_conding_byte.c
+SRC += write_params.c
+SRC += get_dif_label.c
 
 BUILD_DIR	=	../.trash/asm
 

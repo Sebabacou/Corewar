@@ -7,6 +7,8 @@
 
 #ifndef _ASM_H_
     #define _ASM_H_
+    #define AC (char const **)
+    #define SC (char const *)
     #include "all.h"
 
 
@@ -33,6 +35,7 @@
         int error_lab;
         int com;
         int arg_size;
+        char *path;
         int name;
         int comment;
         t_commands *commands;
@@ -68,4 +71,12 @@
     int get_arg_size(t_command *node);
     int prog_size_calculator(data_t *data);
     int size_coding_bite(char *command);
+    int verif_index(t_command *node,int i);
+    int get_dif_label(t_command *node, char const *buffer);
+//<-------------------------- Print function ------------------------------>
+    int fill_read_header(data_t *data, char const *filename);
+    char *get_filename(char const *filename);
+    void write_coding_byte(t_command *node, FILE *fd);
+    int write_instruction(data_t *data);
+    void write_params(t_command *node, FILE *fd);
 #endif

@@ -27,7 +27,7 @@
         {"or", 3,take_and},
         {"xor", 3,take_and},
         {"zjmp", 1,take_fork},
-        {"ldi", 3,take_ld},
+        {"ldi", 3,take_ldi},
         {"sti", 3,take_sti},
         {"fork", 1,take_fork},
         {"lld", 2,take_ld},
