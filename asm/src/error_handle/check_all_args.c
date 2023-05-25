@@ -20,7 +20,7 @@ static int see_command(char *line, data_t *data)
         return 0;
     }
     sep_line = my_str_to_word_array(temp_line, " ");
-    if (verif_args(sep_line, data) == 1) {
+    if (verif_args(sep_line, data) == 1 || check_size_name_com(data) == 1) {
         free(temp_line);
         free_tab(sep_line);
         return 1;

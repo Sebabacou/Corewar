@@ -22,7 +22,7 @@ static char *get_string(char const *info)
     return content;
 }
 
-static char *get_info(char const *search, char const **info)
+char *get_info(char const *search, char const **info)
 {
     int len = my_strlen(search);
     char *clean;
@@ -69,7 +69,8 @@ int fill_read_header(data_t *data, char const *filename)
     char *comment = get_info(".comment", AC data->champion_data);
     header_t header = fill_header();
 
-
+    printf("name = %s\n", name);
+    printf("comment = %s\n", comment);
     my_strcpy(header.prog_name, name);
     my_strcpy(header.comment, comment);
     header.prog_size = htobe32(prog_size_calculator(data));
