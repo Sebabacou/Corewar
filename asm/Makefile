@@ -58,6 +58,7 @@ SRC += write_instruction.c
 SRC += write_conding_byte.c
 SRC += write_params.c
 SRC += get_dif_label.c
+SRC += check_size_line.c
 
 BUILD_DIR	=	../.trash/asm
 
