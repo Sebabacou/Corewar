@@ -29,7 +29,7 @@ int verif_register(const char *buffer)
 
 int verif_indirect(const char *buffer)
 {
-    char *temp_buffer = NULL;    
+    char *temp_buffer = NULL;
 
     if (buffer == NULL)
         return 1;
