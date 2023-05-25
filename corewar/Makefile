@@ -82,6 +82,7 @@ SRC += del_char.c
 SRC += convert_endian.c
 SRC += take_number.c
 SRC += create_pos_from_value.c
+SRC += create_value_from_pos.c
 
 BUILD_DIR	=	../.trash/corewar
 

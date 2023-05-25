@@ -45,7 +45,7 @@ int loop_vm(vm_t *vm)
     }
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
         printf("Cycle to win = %ld\n", vm->cycle_to_die);
-        for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die !=
+        for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die <=
         vm->cycle_to_die && (ssize_t)vm->actual_cycle != vm->cycle_max;
         vm->actual_cycle++, vm->actual_cycle_for_die++) {
             check_champ(vm);
@@ -53,7 +53,7 @@ int loop_vm(vm_t *vm)
         is_alive(vm);
         if (check_win(vm) == 1)
             return 1;
-        vm->cycle_to_die -= CYCLE_DELTA;
+//        vm->cycle_to_die -= CYCLE_DELTA;
     }
     printf("end\n");
     return 0;

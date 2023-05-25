@@ -29,6 +29,7 @@
         char *name;
         bool live;
         bool in_live;
+        size_t nbr_of_live;
         size_t nbr_of_process;
         size_t process_actu;
         process_t **process;
@@ -97,8 +98,8 @@
     //=========> TOOLS <========//
     char *del_char(char *str, char c);
     ssize_t take_number(char *arg);
-    int *new_pos(vm_t *vm, int dist);
     void create_x_y_form_value(int *x ,int *y , int value);
+    int create_value_form_x_y(int x, int y);
 
     //=========> FCT-VM <========//
     int fct_live(vm_t *vm);

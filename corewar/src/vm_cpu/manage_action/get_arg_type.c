@@ -47,6 +47,7 @@ int get_arg_type(vm_t *vm, size_t arg_number)
     size_t value = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 1,
     VM_PROCESS_ACTU->pos_y, 1);
 
+//    printf("value = %ld\n", value);
     if (check_reg(value, arg_number) == true)
         return T_REG;
     if (check_dir(value, arg_number) == true)

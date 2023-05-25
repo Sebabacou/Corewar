@@ -9,10 +9,10 @@
 
 int fct_lldi(vm_t *vm)
 {
-    size_t arg_one_size = get_arg_type(vm, 4);
+    size_t arg_one_size = get_arg_type(vm, 3);
     size_t first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
                                      VM_PROCESS_ACTU->pos_y,arg_one_size);
-    size_t arg_size_two = get_arg_type(vm, 3);
+    size_t arg_size_two = get_arg_type(vm, 2);
     size_t second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + arg_one_size,
                                       VM_PROCESS_ACTU->pos_y, arg_size_two);
     size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
@@ -28,7 +28,7 @@ int fct_lldi(vm_t *vm)
         second_arg = VM_PROCESS_ACTU->reg[first_arg];
     S += second_arg;
     VM_PROCESS_ACTU->reg[third_arg] = get_arg_value(vm, VM_PROCESS_ACTU->pc
-    + S, 0, REG_SIZE);
+    + S, 0, T_REG);
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }

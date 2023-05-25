@@ -50,9 +50,16 @@ int check_in_tab(vm_t *vm)
 
 ssize_t launch_fct_vm(vm_t *vm)
 {
+    size_t test = 0;
+
     if (VM_PROCESS_ACTU->in_live == true && VM_PROCESS_ACTU->cycle_to_wait ==
-    0)
-        VM_PROCESS_ACTU->carry = check_in_tab(vm);
+    0) {
+        test = check_in_tab(vm);
+        if (test == 0)
+            VM_PROCESS_ACTU->carry = 1;
+        else
+            VM_PROCESS_ACTU->carry = 0;
+    }
     VM_PROCESS_ACTU->cycle_to_wait--;
     return 0;
 }
