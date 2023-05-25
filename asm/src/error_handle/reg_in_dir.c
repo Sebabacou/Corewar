@@ -19,7 +19,7 @@ int verif_register(const char *buffer)
         return 1;
     }
     temp_buffer = my_clean_string(temp_buffer, "r", 1);
-    if (my_str_isnum(temp_buffer) == 1 && my_getnbr(temp_buffer) < 16) {
+    if (my_str_isnum(temp_buffer) == 1 && my_getnbr(temp_buffer) < 17) {
         free(temp_buffer);
         return 0;
     }
@@ -29,12 +29,19 @@ int verif_register(const char *buffer)
 
 int verif_indirect(const char *buffer)
 {
+    char *temp_buffer = NULL;
+
     if (buffer == NULL)
         return 1;
-    if (my_str_isnum(buffer) != 1 && buffer[0] == ':')
+    if (buffer[0] == ':')
         return 0;
-    if (my_str_isnum(buffer) == 1 && buffer[0] != ':')
+    temp_buffer = my_strdup(buffer);
+    temp_buffer = my_clean_string(temp_buffer, "-",1);
+    if (my_str_isnum(temp_buffer) == 1) {
+        free(temp_buffer);
         return 0;
+    }
+    free(temp_buffer);
     return 1;
 }
 
