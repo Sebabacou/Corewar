@@ -50,7 +50,7 @@ int verif_args(char **buffer, data_t *data)
     data->comment = 0;
     data->name = 0;
     for (int i = 0;buffer[i] != NULL;i++) {
-        if (data->com == 0)
+        if (data->com == 0 || buffer[i][0] == '#')
             return 0;
         if (loop_arg(buffer, data, i) == 1) {
             return 1;
