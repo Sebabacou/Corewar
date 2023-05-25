@@ -25,4 +25,5 @@ void init_all(data_t *data)
     data->name = 0;
     data->comment = 0;
     data->commands = init_commands();
+    data->path = NULL;
 }
