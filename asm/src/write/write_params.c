@@ -57,6 +57,6 @@ void write_param(char const *param, t_command *node, FILE *fd, int num)
 void write_params(t_command *node, FILE *fd)
 {
     write_param(node->par_one, node, fd, 1);
-    write_param(node->par_two, node, fd, 3);
+    write_param(node->par_two, node, fd, 2);
     write_param(node->par_three, node, fd, 3);
 }

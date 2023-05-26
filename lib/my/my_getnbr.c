@@ -20,7 +20,7 @@ int my_getnbr(char const *str)
     for (int j = 0; str[j]; j++) {
         for (; str[j] >= '0' && str[j] <= '9'; j++, check++)
             n = (n * 10) + (str[j] - '0');
-        if (check != 0 && n < 2147483647)
+        if (check != 0)
             return (n * neg);
     }
     return 0;
