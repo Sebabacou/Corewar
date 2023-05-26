@@ -68,7 +68,6 @@
     void free_commands(t_commands *labels);
     void add_commands(t_commands *commands, int i,char **command);
     int check_labels(data_t *data);
-    int check_label(data_t *data);
     int get_arg_size(t_command *node);
     int prog_size_calculator(data_t *data);
     int size_coding_bite(char *command);
