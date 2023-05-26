@@ -17,7 +17,7 @@ static void write_short_param(char const *param, FILE *fd, t_command *node)
 {
     short nbr;
 
-    if (my_strncmp(param, "%:", 2) == 0) {
+    if (my_strncmp(param, "%:", 2) == 0 || my_strncmp(param, ":", 1) == 0) {
         nbr = htobe16((short)get_dif_label(node, param));
     } else
         nbr = htobe16(my_getnbr(param));
@@ -57,6 +57,6 @@ void write_param(char const *param, t_command *node, FILE *fd, int num)
 void write_params(t_command *node, FILE *fd)
 {
     write_param(node->par_one, node, fd, 1);
-    write_param(node->par_two, node, fd, 3);
+    write_param(node->par_two, node, fd, 2);
     write_param(node->par_three, node, fd, 3);
 }
