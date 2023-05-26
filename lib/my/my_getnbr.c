@@ -14,7 +14,9 @@ int my_getnbr(char const *str)
     long int n = 0;
     int check = 0;
 
-    for (int i = 0; str[i] < '0' || str[i] > '9'; i++)
+    if (str == NULL)
+        return 0;
+    for (int i = 0; (str[i] < '0' || str[i] > '9') && str[i]; i++)
         if (str[i] == '-')
             neg = neg * (-1);
     for (int j = 0; str[j]; j++) {

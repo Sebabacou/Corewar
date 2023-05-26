@@ -30,7 +30,7 @@ static int verif_char(char *buffer)
     }
     free(temp_buffer);
     return 0;
-} 
+}
 
 static int not_label(t_commands *commands)
 {
