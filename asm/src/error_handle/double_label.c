@@ -7,7 +7,7 @@
 
 #include "asm.h"
 
-int my_str_isalphanums(char const *str)
+static int my_str_isalphanums(char const *str)
 {
     if (str == NULL)
         return 0;
@@ -30,7 +30,7 @@ static int verif_char(char *buffer)
     }
     free(temp_buffer);
     return 0;
-}
+} 
 
 static int not_label(t_commands *commands)
 {
@@ -48,7 +48,7 @@ static int not_label(t_commands *commands)
 
 int double_label(data_t *data)
 {
-    if (not_label(data->commands) == 1)
+    if (check_label(data) == 1 || not_label(data->commands) == 1)
         return 1;
     return 0;
 }

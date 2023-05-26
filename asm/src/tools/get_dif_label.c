@@ -19,6 +19,15 @@ char *clone_label(char *label)
     return temp_label;
 }
 
+int verif_double_point(char *buffer)
+{
+    for (int i = 0;buffer[i] != '\0';i++) {
+        if (buffer[i] == ':')
+            return 1;
+    }
+    return 0;
+}
+
 int check_label_before(t_command *node, char *buffer)
 {
     char *temp_command = NULL;
@@ -30,7 +39,8 @@ int check_label_before(t_command *node, char *buffer)
         temp_command = clone_label(temp_node->command);
         if (temp_command == NULL)
             return 0;
-        if (my_strcmp(temp_command, buffer) == 0) {
+        if (my_strcmp(temp_command, buffer) == 0
+        && verif_double_point(temp_node->command) == 1) {
             free(temp_command);
             return res;
         } res -= get_arg_size(temp_node);
@@ -48,11 +58,11 @@ int check_label_after(t_command *node, char *buffer)
         temp_command = clone_label(temp_node->command);
         if (temp_command == NULL)
             return 0;
-        if (my_strcmp(temp_command, buffer) == 0) {
+        if (my_strcmp(temp_command, buffer) == 0
+        && verif_double_point(temp_node->command) == 1) {
             free(temp_command);
             return res;
-        } 
-        res += get_arg_size(temp_node);
+        } res += get_arg_size(temp_node);
         free(temp_command);
     } return 0;
 }
