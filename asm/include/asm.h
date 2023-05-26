@@ -75,6 +75,7 @@
     int get_dif_label(t_command *node, char const *buffer);
     char *get_info(char const *search, char const **info);
     int check_size_name_com(data_t *data);
+    int check_double_info(char const **champion_data);
 //<-------------------------- Print function ------------------------------>
     int fill_read_header(data_t *data, char const *filename);
     char *get_filename(char const *filename);

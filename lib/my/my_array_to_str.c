@@ -12,7 +12,6 @@
 char *my_array_to_str_separator(char const **array, char const *separator)
 {
     char *str = NULL;
-    char *str_separator;
     char *str_tmp;
 
     if (array == NULL || array[0] == NULL)
