@@ -38,13 +38,13 @@ static void is_alive(vm_t *vm)
 
 int loop_vm(vm_t *vm)
 {
-    for (size_t i = 0; i != MEM_Y; i++) {
-        for (size_t y = 0; y != MEM_X; y++)
-            printf("%x|", vm->buffer[i][y]);
-        printf("\n");
-    }
+//    for (size_t i = 0; i != MEM_Y; i++) {
+//        for (size_t y = 0; y != MEM_X; y++)
+//            printf("%ld:%x|",y, vm->buffer[i][y]);
+//        printf("\n");
+//    }
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
-        printf("Cycle to win = %ld\n", vm->cycle_to_die);
+//        printf("Cycle to win = %ld\n", vm->cycle_to_die);
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die <=
         vm->cycle_to_die && (ssize_t)vm->actual_cycle != vm->cycle_max;
         vm->actual_cycle++, vm->actual_cycle_for_die++) {
@@ -55,6 +55,6 @@ int loop_vm(vm_t *vm)
             return 1;
 //        vm->cycle_to_die -= CYCLE_DELTA;
     }
-    printf("end\n");
+//    printf("end\n");
     return 0;
 }

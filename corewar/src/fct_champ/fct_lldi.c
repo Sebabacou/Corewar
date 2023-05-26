@@ -48,8 +48,8 @@ int fct_lldi(vm_t *vm)
     size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
     arg_one_size + arg_size_two, VM_PROCESS_ACTU->pos_y,T_REG);
 
-    first_arg = fct_ldi_first(arg_one_size, vm, first_arg);
-    second_arg = fct_ldi_second(vm, arg_size_two, second_arg, arg_one_size);
+    first_arg = fct_lldi_first(arg_one_size, vm, first_arg);
+    second_arg = fct_lldi_second(vm, arg_size_two, second_arg, arg_one_size);
 
     if (arg_one_size == 0)
         return 84;
@@ -57,7 +57,7 @@ int fct_lldi(vm_t *vm)
         return 84;
     if (third_arg > REG_NUMBER)
         return 84;
-    do_lfi(vm, first_arg, second_arg, third_arg);
+    do_llfi(vm, first_arg, second_arg, third_arg);
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 42;
 }

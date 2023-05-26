@@ -9,14 +9,15 @@
 
 int fct_zjmp(vm_t *vm)
 {
+    int temp = create_value_form_x_y(VM_PROCESS_ACTU->pos_x,
+                                     VM_PROCESS_ACTU->pos_y);
+    short int first_arg = 0;
     if (VM_PROCESS_ACTU->carry == 0)
         return 0;
-    size_t first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 1,
+    first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 1,
                                      VM_PROCESS_ACTU->pos_y, IND_SIZE);
-    VM_PROCESS_ACTU->pc += first_arg % IDX_MOD;
-    printf("%ld\n", first_arg);
-    printf("jump to %d\n", VM_PROCESS_ACTU->pc);
-    move_process(vm, VM_PROCESS_ACTU->pc);
-    printf("%d\n", VM_PROCESS_ACTU->pc);
+    temp += first_arg % IDX_MOD;
+    create_x_y_form_value((int *)&VM_PROCESS_ACTU->pos_x,
+                          (int *)&VM_PROCESS_ACTU->pos_y, temp);
     return 0;
 }

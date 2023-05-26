@@ -23,7 +23,7 @@ static size_t check_len(vm_t *vm, int code)
 //            printf("IND\n");
         }
 //        printf("%ld | %ld\n", verif, i);
-//        len += verif;
+        len += verif;
     }
 //    printf("len to add other = %ld\n", len + 2);
     return len + 1;

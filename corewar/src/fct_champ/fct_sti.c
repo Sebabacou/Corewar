@@ -11,13 +11,20 @@ int do_sti(vm_t *vm, size_t two, size_t three, size_t id_reg)
 {
     size_t x = 0;
     size_t y = 0;
-
-    create_x_y_form_value((int *)&x, (int *)&y, VM_PROCESS_ACTU->pc + (two +
+    size_t temp = create_value_form_x_y(VM_PROCESS_ACTU->pos_x,
+                                        VM_PROCESS_ACTU->pos_y);
+//    two = 0;
+    //TODO ; write in 3 bytes
+    create_x_y_form_value((int *)&x, (int *)&y, temp + 3 + (two +
     three) % IDX_MOD);
-    printf("STI : value %d at pos %ld,%ld -> ", vm->buffer[y][x], y, x);
+//    printf("STI : value %d at pos %ld,%ld -> \n", vm->buffer[y][x], y, x);
+//    printf("pos = %d\n", create_value_form_x_y((int)x, (int)y));
 //    printf("\n%ld\n", id_reg);
+//    printf("%ld\n", two);
+//    printf("%ld\n", three);
+//    printf("to add = %ld\n", two + three);
     vm->buffer[y][x] = VM_PROCESS_ACTU->reg[id_reg];
-    printf("value = %d\n", vm->buffer[x][y]);
+//    printf("value = %d\n", vm->buffer[x][y]);
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }

@@ -45,11 +45,11 @@ int fct_lld(vm_t *vm)
     size_t size_arg_one = get_arg_type(vm, 3);
 
     if (size_arg_one == T_DIR) {
-        if (fct_ld_tdir(vm, size_arg_one) == 84)
+        if (fct_lld_tdir(vm, size_arg_one) == 84)
             return 84;
     }
     if (size_arg_one == T_IND) {
-        if (fct_ld_ind(vm, size_arg_one) == 84)
+        if (fct_lld_ind(vm, size_arg_one) == 84)
             return 84;
     }
 //    printf("len of ld = %ld\n", T_REG + size_arg_one);
