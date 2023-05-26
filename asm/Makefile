@@ -60,6 +60,8 @@ SRC += write_params.c
 SRC += get_dif_label.c
 SRC += check_size_line.c
 SRC += check_double_info.c
+SRC += double_label.c
+SRC += check_label.c
 
 BUILD_DIR	=	../.trash/asm
 
