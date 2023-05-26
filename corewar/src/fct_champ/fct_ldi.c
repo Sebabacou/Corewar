@@ -37,6 +37,9 @@ int fct_ldi(vm_t *vm)
     else
         second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
                                   VM_PROCESS_ACTU->pos_y,IND_SIZE);
+    if (third_arg > REG_NUMBER)
+        return 84;
     do_lfi(vm, first_arg, second_arg, third_arg);
-    move_process(vm, VM_PROCESS_ACTU->pc); return 0;
+    move_process(vm, VM_PROCESS_ACTU->pc);
+    return 42;
 }

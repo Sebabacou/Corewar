@@ -18,6 +18,8 @@ int fct_lld(vm_t *vm)
                             VM_PROCESS_ACTU->pos_y, size_arg_one + 2);
         id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + DIR_SIZE,
                             VM_PROCESS_ACTU->pos_y, T_REG);
+        if (id_reg > REG_NUMBER)
+            return 84;
         VM_PROCESS_ACTU->reg[id_reg] = get_arg_value(vm, VM_PROCESS_ACTU->pc + one,
     0, T_REG);
     }
@@ -28,9 +30,11 @@ int fct_lld(vm_t *vm)
         one = get_arg_value(vm, VM_PROCESS_ACTU->pc + one % IDX_MOD, 0, size_arg_one);
         id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + size_arg_one,
                             VM_PROCESS_ACTU->pos_y, T_REG);
+        if (id_reg > REG_NUMBER)
+            return 84;
         VM_PROCESS_ACTU->reg[id_reg] = get_arg_value(vm, VM_PROCESS_ACTU->pc + one,
     0, T_REG);
     }
     move_process(vm, VM_PROCESS_ACTU->pc);
-    return 0;
+    return 42;
 }

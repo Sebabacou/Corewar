@@ -55,9 +55,9 @@ ssize_t launch_fct_vm(vm_t *vm)
     if (VM_PROCESS_ACTU->in_live == true && VM_PROCESS_ACTU->cycle_to_wait ==
     0) {
         test = check_in_tab(vm);
-        if (test == 0)
+        if (test == 42)
             VM_PROCESS_ACTU->carry = 1;
-        else
+        if (test == 84)
             VM_PROCESS_ACTU->carry = 0;
     }
     VM_PROCESS_ACTU->cycle_to_wait--;
