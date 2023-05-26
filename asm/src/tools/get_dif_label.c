@@ -19,6 +19,25 @@ char *clone_label(char *label)
     return temp_label;
 }
 
+int temp_label(char *temp_command, char *buffer)
+{
+    int verif = 0;
+
+    if (temp_command == NULL)
+        return 0;
+    for (int i = 0;temp_command[i] != '\0';i++) {
+        if (temp_command[i] == ':')
+            verif = 1;
+    }
+    temp_command = clone_label(temp_command);
+    if (my_strcmp(temp_command, buffer) == 0 && verif == 1) {
+        free(temp_command);
+        return 1;
+    }
+    free(temp_command);
+    return 0;
+}
+
 int check_label_before(t_command *node, char *buffer)
 {
     char *temp_command = NULL;
@@ -28,16 +47,13 @@ int check_label_before(t_command *node, char *buffer)
     temp_node = temp_node->prev;
     for (;temp_node != NULL;temp_node = temp_node->prev) {
         temp_command = clone_label(temp_node->command);
-        if (temp_command == NULL)
-            return 0;
-        if (my_strcmp(temp_command, buffer) == 0) {
+        if ((res = temp_label(temp_command, buffer)) == 1) {
             free(temp_command);
             return res;
         }
         res -= get_arg_size(temp_node);
         free(temp_command);
-    }
-    return 0;
+    } return 0;
 }
 
 int check_label_after(t_command *node, char *buffer)
@@ -47,17 +63,14 @@ int check_label_after(t_command *node, char *buffer)
     t_command *temp_node = node;
 
     for (;temp_node != NULL;temp_node = temp_node->next) {
-        temp_command = clone_label(temp_node->command);
-        if (temp_command == NULL)
-            return 0;
-        if (my_strcmp(temp_command, buffer) == 0) {
+        temp_command = my_strdup(temp_node->command);
+        if ((res = temp_label(temp_command, buffer)) == 1) {
             free(temp_command);
             return res;
         }
         res += get_arg_size(temp_node);
         free(temp_command);
-    }
-    return 0;
+    } return 0;
 }
 
 int get_dif_label(t_command *node, char const *buffer)
