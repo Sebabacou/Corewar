@@ -94,6 +94,7 @@
 
     //========> DISPLAY <=======//
     void display_help(void);
+    void display_buffer(vm_t *vm);
 
     //=========> TOOLS <========//
     char *del_char(char *str, char c);

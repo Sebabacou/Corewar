@@ -11,7 +11,6 @@ static int check_process(vm_t *vm)
 {
     for (VM_CHAMP_ACTU.process_actu = 0; VM_CHAMP_ACTU.process_actu !=
     VM_CHAMP_ACTU.nbr_of_process; VM_CHAMP_ACTU.process_actu++) {
-//        printf("%ld\n", VM_CHAMP_ACTU.process_actu);
         define_wait_cycle(vm);
         launch_fct_vm(vm);
     }
@@ -21,7 +20,7 @@ static int check_process(vm_t *vm)
 static int check_champ(vm_t *vm)
 {
     for (vm->champ_actu = 0; vm->champ_actu != vm->nbr_champ;
-         vm->champ_actu++)
+    vm->champ_actu++)
         if (VM_CHAMP_ACTU.in_live == true)
             check_process(vm);
     return 0;
@@ -39,11 +38,7 @@ static void is_alive(vm_t *vm)
 
 int loop_vm(vm_t *vm)
 {
-//    for (size_t i = 0; i != MEM_Y; i++) {
-//        for (size_t y = 0; y != MEM_X; y++)
-//            printf("%ld:%x|",y, vm->buffer[i][y]);
-//        printf("\n");
-//    }
+    display_buffer(vm);
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
         printf("Cycle to win = %ld\n", vm->cycle_to_die);
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die <=
@@ -55,6 +50,5 @@ int loop_vm(vm_t *vm)
         if (check_win(vm) == 1)
             return 1;
     }
-//    printf("end\n");
     return 0;
 }

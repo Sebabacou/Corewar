@@ -19,13 +19,6 @@ int fct_fork(vm_t *vm)
     move_process(vm, to_move + parameter % IDX_MOD);
     VM_PROCESS_ACTU->pc = VM_CHAMP_ACTU.process[VM_CHAMP_ACTU.process_actu -
                                                 1]->pc + parameter % IDX_MOD;
-//    printf("FORK : ");
-//    printf("PC to go = %ld -> %ld,%ld | ", VM_CHAMP_ACTU.process[VM_CHAMP_ACTU
-//    .process_actu - 1]->pc + parameter % IDX_MOD, VM_PROCESS_ACTU->pos_y,
-//           VM_PROCESS_ACTU->pos_x);
-//    printf("value of %x | ", vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU
-//    ->pos_x]);
-//    printf("pos of new process = %d\n", VM_PROCESS_ACTU->pc);
     VM_CHAMP_ACTU.process_actu--;
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;

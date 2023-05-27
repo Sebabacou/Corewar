@@ -15,7 +15,6 @@ int do_sti(vm_t *vm, size_t two, size_t three)
                                         VM_PROCESS_ACTU->pos_y);
     size_t id_reg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
     VM_PROCESS_ACTU->pos_y, T_REG);
-    //TODO ; write in 3 bytes
     create_x_y_form_value((int *)&x, (int *)&y, temp + 3 + (two +
     three) % IDX_MOD);
     vm->buffer[y][x] = VM_PROCESS_ACTU->reg[id_reg];
@@ -23,6 +22,7 @@ int do_sti(vm_t *vm, size_t two, size_t three)
     return 0;
 }
 
+//TODO : write in 3 or 4 bytes
 size_t cond_sti(vm_t *vm, size_t size_arg_two, size_t two)
 {
     size_t x = 0;

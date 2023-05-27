@@ -76,6 +76,7 @@ SRC += fct_aff.c
 
 #========> DISPLAY <=======#
 SRC += display_help.c
+SRC += display_buffer.c
 
 #=========> TOOLS <========#
 SRC += del_char.c
