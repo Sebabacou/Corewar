@@ -38,7 +38,8 @@ void define_pc(vm_t *vm, int code)
         if (code == 1) {
             VM_PROCESS_ACTU->pc = create_value_form_x_y(VM_PROCESS_ACTU->pos_x,
             VM_PROCESS_ACTU->pos_y) + DIR_SIZE;
-//            printf("len to add direct = %d\n", T_DIR + 1);
+//            printf("len to add direct = %d and %ld,%ld\n", T_DIR + 1,
+//                   VM_PROCESS_ACTU->pos_x, VM_PROCESS_ACTU->pos_y);
         }
         if (code == 12 || code == 9 || code == 15) {
             VM_PROCESS_ACTU->pc = create_value_form_x_y(VM_PROCESS_ACTU->pos_x,

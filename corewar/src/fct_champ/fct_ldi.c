@@ -10,32 +10,33 @@
 static void do_lfi(vm_t *vm, size_t first_arg, size_t second_arg, size_t
 third_arg)
 {
-    size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + (first_arg % IDX_MOD), 0,
-                             IND_SIZE);
+    size_t S = get_arg_value(vm, VM_PROCESS_ACTU->pc + (first_arg % IDX_MOD)
+    , 0, IND_SIZE);
     S += second_arg;
     VM_PROCESS_ACTU->reg[third_arg] = get_arg_value(vm, VM_PROCESS_ACTU->pc
-                                                        + (S % IDX_MOD), 0, T_REG);
+    + (S % IDX_MOD), 0, T_REG);
 }
 
 size_t fct_ldi_first(size_t arg_one_size, vm_t *vm, size_t first_arg)
 {
     if (arg_one_size == T_REG)
         first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
-                      VM_PROCESS_ACTU->pos_y,T_REG);
+        VM_PROCESS_ACTU->pos_y,T_REG);
     else
         first_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
-                                  VM_PROCESS_ACTU->pos_y,IND_SIZE);
+        VM_PROCESS_ACTU->pos_y,IND_SIZE);
     return first_arg;
 }
 
-size_t fct_ldi_second(vm_t *vm, size_t arg_size_two, size_t second_arg, size_t arg_one_size)
+size_t fct_ldi_second(vm_t *vm, size_t arg_size_two, size_t second_arg,
+size_t arg_one_size)
 {
     if (arg_size_two == T_REG)
-        second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 + arg_one_size,
-                                  VM_PROCESS_ACTU->pos_y, arg_size_two);
+        second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
+        arg_one_size, VM_PROCESS_ACTU->pos_y, arg_size_two);
     else
         second_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2,
-                                  VM_PROCESS_ACTU->pos_y,IND_SIZE);
+        VM_PROCESS_ACTU->pos_y,IND_SIZE);
     return second_arg;
 }
 

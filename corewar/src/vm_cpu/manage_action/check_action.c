@@ -29,8 +29,8 @@ static const action_t action[] = {
 
 int verif_fonct(vm_t *vm, size_t a)
 {
-    if (action[a].name == vm->buffer[VM_PROCESS_ACTU->pos_y]
-    [VM_PROCESS_ACTU->pos_x])
+    if (action[a].name == vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU
+    ->pos_x])
         if (action[a].fonk != NULL)
             return action[a].fonk(vm);
     return -1;

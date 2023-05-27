@@ -116,7 +116,7 @@ static const op_t op_tab[] =
             "sti", 3,
             {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG},
             11, 25 ,"store index"
-            },
+        },
         {
             "fork", 1,
             {T_DIR},
