@@ -50,7 +50,7 @@ size_t cond_sti_second(vm_t *vm, size_t size_arg_three, size_t two, size_t three
         two = VM_PROCESS_ACTU->reg[three];
     return two;
 }
-// TODO : 1 -> 3 | 2 -> 2 | 3 -> 1 | 4 -> 4
+
 int fct_sti(vm_t *vm)
 {
     size_t two, three = 0;

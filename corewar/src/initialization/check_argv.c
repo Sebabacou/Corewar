@@ -35,6 +35,7 @@ int check_argv(char **argv, vm_t *vm)
         if (to_skip == -1) {
             my_printf("%s: Not a know settings or bad use of settings. \
 For help use ./corewar/corewar"" -h.\n", argv[i]);
+            return 84;
         }
     }
     return 0;
