@@ -10,10 +10,58 @@ CC 			= 	gcc
 NAME		=	asm
 
 VPATH := src
+VPATH += src/error_handle
+VPATH += src/error_handle/tiret_h
+VPATH += src/manage_file
+VPATH += src/init
+VPATH += src/destroy_bomber
+VPATH += src/error_handle/handle_pointer
+VPATH += src/error_handle/link_list
+VPATH += src/header
+VPATH += src/tools
+VPATH += src/write
 
 vpath %.c $(VPATH)
 
 SRC := main.c
+SRC += error_handle.c
+SRC += print_h.c
+SRC += open_read_file.c
+SRC += init_all.c
+SRC += free_all.c
+SRC += take_name.c
+SRC += clean_str.c
+SRC += verif_args.c
+SRC += error_label.c
+SRC += verif_com.c
+SRC += take_add.c
+SRC += take_aff.c
+SRC += take_fork.c
+SRC += take_ld.c
+SRC += take_ldi.c
+SRC += take_live.c
+SRC += take_st.c
+SRC += take_sti.c
+SRC += take_and.c
+SRC += check_all_args.c
+SRC += reg_in_dir.c
+SRC += free_link.c
+SRC += add_command.c
+SRC += check_labels.c
+SRC += get_arg_size.c
+SRC += prog_size_calculator.c
+SRC += size_coding_bite.c
+SRC += fill_read_header.c
+SRC += get_filename.c
+SRC += op.c
+SRC += write_instruction.c
+SRC += write_conding_byte.c
+SRC += write_params.c
+SRC += get_dif_label.c
+SRC += check_size_line.c
+SRC += check_double_info.c
+SRC += double_label.c
+SRC += check_label.c
 
 BUILD_DIR	=	../.trash/asm
 
@@ -21,7 +69,7 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS) -g
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\

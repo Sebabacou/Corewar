@@ -18,7 +18,7 @@ static int in_champ_buffer(int fd, vm_t *vm)
     if (read(fd, VM_CHAMP_ACTU.buffer,VM_CHAMP_ACTU.size_champion ) <= -1)
         return 84;
     VM_CHAMP_ACTU.size_champion = VM_CHAMP_ACTU.size_champion -
-            (PROG_NAME_LENGTH + COMMENT_LENGTH);
+            (PROG_NAME_LENGTH + COMMENT_LENGTH + 16);
     return 0;
 }
 

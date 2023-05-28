@@ -9,7 +9,7 @@
 
 static void put_the_champ(vm_t *vm)
 {
-    size_t pos = PROG_NAME_LENGTH + COMMENT_LENGTH;
+    size_t pos = PROG_NAME_LENGTH + COMMENT_LENGTH + 16;
     size_t stop = VM_CHAMP_ACTU.size_champion + PROG_NAME_LENGTH +
             COMMENT_LENGTH;
     VM_CHAMP_ACTU.process_actu = 0;

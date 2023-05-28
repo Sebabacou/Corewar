@@ -14,13 +14,15 @@ int my_getnbr(char const *str)
     long int n = 0;
     int check = 0;
 
-    for (int i = 0; str[i] < '0' || str[i] > '9'; i++)
+    if (str == NULL)
+        return 0;
+    for (int i = 0; (str[i] < '0' || str[i] > '9') && str[i]; i++)
         if (str[i] == '-')
             neg = neg * (-1);
     for (int j = 0; str[j]; j++) {
         for (; str[j] >= '0' && str[j] <= '9'; j++, check++)
             n = (n * 10) + (str[j] - '0');
-        if (check != 0 && n < 2147483647)
+        if (check != 0)
             return (n * neg);
     }
     return 0;

@@ -74,12 +74,12 @@ char **my_str_to_word_array(char const *str, char *separators)
     int nb_word = count_word(str, separators);
     char **tab = malloc(sizeof(char *) * (nb_word + 1));
 
-    for (int i = 0; i <= nb_word; i++)
-        tab[i] = NULL;
     if (tab == NULL || str == NULL || str[0] == '\0') {
         free(tab);
         return NULL;
     }
+    for (int i = 0; i <= nb_word; i++)
+        tab[i] = NULL;
     if (fill_tab(tab, len, str, separators) == 84) {
         free_tab(tab);
         return NULL;
