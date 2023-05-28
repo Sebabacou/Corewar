@@ -1,24 +1,29 @@
 /*
 ** EPITECH PROJECT, 2023
-** corwar
+** corewar
 ** File description:
 ** main.c
 */
 
 #include "corewar.h"
 
-int main( int argc, UNUSED char **argv)
+int main(UNUSED int argc, char **argv)
 {
-    if (argc >= 2) {
-        argv[1] = del_char(argv[1], '-');
-        if (my_strcmp(argv[1], "h") == 0) {
-            display_help();
-            free(argv[1]);
-            return 0;
-        } else {
-            free(argv[1]);
-            return 84;
-        }
+    vm_t *vm;
+
+    if ((vm = my_calloc(sizeof(vm_t))) == 0)
+        return 84;
+    if (argv[1] != NULL && check_help(argv[1]) == 0) {
+        display_help();
+        my_free(vm);
+        return 0;
     }
-    return 84;
+    if (init_vm(argv, vm) != 0)
+        return 84;
+    if (vm->nbr_champ == 0 || loop_vm(vm) == 84) {
+        free_all(vm, ALL);
+        return 84;
+    }
+    free_all(vm, ALL);
+    return 0;
 }

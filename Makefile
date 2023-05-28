@@ -19,7 +19,7 @@ TMP_FILES	=	*.gcno					\
 				*.gcda					\
 				vgcore.*				\
 				coding-style-reports.log\
-				-rf $(BUILD_DIR)
+				-r $(BUILD_DIR)
 
 # ------ DISPLAY -------- #
 
@@ -43,25 +43,24 @@ all: $(A_NAME) $(C_NAME)
 	@ rm for_clion
 
 $(A_NAME): lib
-	@ $(MAKE) -sC $(A_PATH)
+	@ $(MAKE) -j -sC $(A_PATH)
 
 $(C_NAME): lib
-	@ $(MAKE) -sC $(C_PATH)
+	@ $(MAKE) -j -sC $(C_PATH)
 
 clean:
 	@ $(RM) $(TMP_FILES)
 
 fclean:		clean
 	@ $(RM) $(NAME)
-	@ $(MAKE) fclean -sC ./lib/my
-	@ $(MAKE) fclean -sC ./lib/my_printf
+	@ $(MAKE) fclean -sC ./lib
 	@ $(MAKE) fclean -sC $(A_PATH)
 	@ $(MAKE) fclean -sC $(C_PATH)
 	@ $(ECHO) "$(C_GREY)|==========> TEMPORARY FILE DEL. <==========|$(C_RESET)"
 
 re:		fclean all
 
-debug: fclean lib a_debug c_debug
+debug: fclean a_debug c_debug
 
 a_debug: lib
 	@ $(MAKE) debug -sC $(A_PATH)
@@ -70,7 +69,6 @@ c_debug: lib
 	@ $(MAKE) debug -sC $(C_PATH)
 
 lib:
-	@ $(MAKE) -sC ./lib/my
-	@ $(MAKE) -sC ./lib/my_printf
+	@ $(MAKE) -sC ./lib
 
 .PHONY: all re clean fclean debug a_debug c_debug asm corewar lib

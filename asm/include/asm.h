@@ -1,26 +1,18 @@
 /*
 ** EPITECH PROJECT, 2023
-** corwar
+** corewar
 ** File description:
 ** asm.h
 */
 
 #ifndef _ASM_H_
     #define _ASM_H_
+    #define AC (char const **)
+    #define SC (char const *)
     #include "all.h"
 
 
 //<------------------------- link_list ------------------->
-    typedef struct label{
-        char *label;
-        struct label *next;
-        struct label *prev;
-    } t_label;
-
-    typedef struct labels {
-        t_label *head;
-        t_label *tail;
-    } t_labels;
 
     typedef struct command {
         char *command;
@@ -43,7 +35,9 @@
         int error_lab;
         int com;
         int arg_size;
-        t_labels *labels;
+        char *path;
+        int name;
+        int comment;
         t_commands *commands;
     } data_t;
 
@@ -68,11 +62,26 @@
     int verif_args(char **buffer, data_t *data);
     int verif_label(char *command);
     int verif_com(char *buffer);
-    int verif_register(char *buffer);
-    int verif_indirect(char *buffer);
-    int verif_direct(char *buffer);
-    void free_labels(t_labels *labels);
+    int verif_register(const char *buffer);
+    int verif_indirect(const char *buffer);
+    int verif_direct(const char *buffer);
     void free_commands(t_commands *labels);
     void add_commands(t_commands *commands, int i,char **command);
-    void add_labels(t_labels *labels, int i,char **label);
+    int check_labels(data_t *data);
+    int check_label(data_t *data);
+    int get_arg_size(t_command *node);
+    int prog_size_calculator(data_t *data);
+    int size_coding_bite(char *command);
+    int verif_index(t_command *node,int i);
+    int get_dif_label(t_command *node, char const *buffer);
+    char *get_info(char const *search, char const **info);
+    int check_size_name_com(data_t *data);
+    int check_double_info(char const **champion_data);
+    int double_label(data_t *data);
+//<-------------------------- Print function ------------------------------>
+    int fill_read_header(data_t *data, char const *filename);
+    char *get_filename(char const *filename);
+    void write_coding_byte(t_command *node, FILE *fd);
+    int write_instruction(data_t *data);
+    void write_params(t_command *node, FILE *fd);
 #endif

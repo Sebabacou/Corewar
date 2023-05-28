@@ -8,7 +8,7 @@
 #include "asm.h"
 #include "pointeur_actions.h"
 
-int see_command(char *line, data_t *data)
+static int see_command(char *line, data_t *data)
 {
     char *temp_line = NULL;
     char **sep_line = NULL;
@@ -20,7 +20,7 @@ int see_command(char *line, data_t *data)
         return 0;
     }
     sep_line = my_str_to_word_array(temp_line, " ");
-    if (verif_args(sep_line, data) == 1) {
+    if (verif_args(sep_line, data) == 1 || check_size_name_com(data) == 1) {
         free(temp_line);
         free_tab(sep_line);
         return 1;
@@ -36,5 +36,7 @@ int check_all_args(data_t *data)
         if (see_command(data->champion_data[indice], data) == 1)
             return 1;
     }
+    if (double_label(data) == 1)
+        return 1;
     return 0;
 }

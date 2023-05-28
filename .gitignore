@@ -5,3 +5,6 @@ coding-style-reports.log
 .xml
 .idea
 .trash
+asm/champions/
+corewar
+corewar_binaries

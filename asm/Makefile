@@ -17,6 +17,9 @@ VPATH += src/init
 VPATH += src/destroy_bomber
 VPATH += src/error_handle/handle_pointer
 VPATH += src/error_handle/link_list
+VPATH += src/header
+VPATH += src/tools
+VPATH += src/write
 
 vpath %.c $(VPATH)
 
@@ -44,7 +47,21 @@ SRC += check_all_args.c
 SRC += reg_in_dir.c
 SRC += free_link.c
 SRC += add_command.c
-SRC += add_label.c
+SRC += check_labels.c
+SRC += get_arg_size.c
+SRC += prog_size_calculator.c
+SRC += size_coding_bite.c
+SRC += fill_read_header.c
+SRC += get_filename.c
+SRC += op.c
+SRC += write_instruction.c
+SRC += write_conding_byte.c
+SRC += write_params.c
+SRC += get_dif_label.c
+SRC += check_size_line.c
+SRC += check_double_info.c
+SRC += double_label.c
+SRC += check_label.c
 
 BUILD_DIR	=	../.trash/asm
 
@@ -52,7 +69,7 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS) -g
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\
