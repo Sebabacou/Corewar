@@ -6,9 +6,5 @@ coding-style-reports.log
 .idea
 .trash
 asm/champions/
-*.s
-*.cor
 corewar
-lui
-moi
 corewar_binaries
