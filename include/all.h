@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2023
-** corwar
+** corewar
 ** File description:
 ** all.h
 */
@@ -15,6 +15,8 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>
+    #include <fcntl.h>
     #include <sys/types.h>
+    #include <stdbool.h>
 
 #endif

@@ -69,7 +69,7 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIB_FLAGS	=	-L./../lib/ -lmy -lprint
 IFLAGS		=	-I./include/ -I./../include/ -I./../lib/include/
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS) -g
 
 TMP_FILES	=	*.gcno					\
 				*.gcda					\
