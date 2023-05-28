@@ -44,6 +44,7 @@ SRC += init_startchamp.c
 SRC += load_champion_in_vm.c
 SRC += init_process.c
 SRC += define_name_champ.c
+SRC += settings_debug.c
 
 #=========> VM <========#
 SRC += loop_vm.c

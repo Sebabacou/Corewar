@@ -18,11 +18,9 @@ int do_sti(vm_t *vm, size_t two, size_t three)
     create_x_y_form_value((int *)&x, (int *)&y, temp + 3 + (two +
     three) % IDX_MOD);
     vm->buffer[y][x] = VM_PROCESS_ACTU->reg[id_reg];
-    move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }
 
-//TODO : write in 3 or 4 bytes
 size_t cond_sti(vm_t *vm, size_t size_arg_two, size_t two)
 {
     size_t x = 0;
@@ -66,5 +64,6 @@ int fct_sti(vm_t *vm)
     two = cond_sti(vm, size_arg_two, two);
     two = cond_sti_second(vm, size_arg_three, two, three);
     do_sti(vm, two, three);
+    move_process(vm, VM_PROCESS_ACTU->pc);
     return 0;
 }

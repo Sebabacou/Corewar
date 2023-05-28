@@ -39,14 +39,14 @@ int fct_and(vm_t *vm)
     size_t arg_size_three = get_arg_type(vm, 1);
     size_t third_arg = get_arg_value(vm, VM_PROCESS_ACTU->pos_x + 2 +
     size_arg_one + arg_size_two, VM_PROCESS_ACTU->pos_y, T_REG);
-
     first_arg = fct_and_first(vm, size_arg_one, first_arg);
     second_arg = fct_and_second(vm, arg_size_two, second_arg);
+    move_process(vm, VM_PROCESS_ACTU->pc);
     if (arg_size_three != T_REG)
         return 84;
     if (third_arg > REG_NUMBER)
         return 84;
     VM_PROCESS_ACTU->reg[third_arg] = first_arg & second_arg;
-    move_process(vm, VM_PROCESS_ACTU->pc);
+    VM_PROCESS_ACTU->carry = first_arg & second_arg;
     return 42;
 }

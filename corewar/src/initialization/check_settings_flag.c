@@ -11,6 +11,7 @@ static const settings_flag_t flags[] = {
         {"-dump", manage_dump},
         {"-n", manage_n},
         {"-a", manage_a},
+        {"-debug", manage_debug},
         {NULL, NULL}
 };
 

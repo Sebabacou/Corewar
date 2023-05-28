@@ -38,5 +38,9 @@ For help use ./corewar/corewar"" -h.\n", argv[i]);
             return 84;
         }
     }
+    if (vm->nbr_champ <= 1) {
+        my_printf("Need at least 2 champion.\n");
+        return 84;
+    }
     return 0;
 }

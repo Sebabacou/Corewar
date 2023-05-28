@@ -23,4 +23,5 @@ void display_help(void)
     my_printf("no address is specified, optimize the addresses so that the ");
     my_printf("processes are as far away from each other as possible. The ");
     my_printf("addresses are MEM_SIZE modulo.\n");
+    my_printf("-debug launch the vm in debug mode.\n");
 }

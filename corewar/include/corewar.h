@@ -20,7 +20,7 @@
         size_t pos_y;
         unsigned int reg[REG_NUMBER];
         int pc;
-        bool carry;
+        int carry;
         bool in_live;
     }process_t;
 
@@ -29,7 +29,6 @@
         char *name;
         bool live;
         bool in_live;
-        size_t nbr_of_live;
         size_t nbr_of_process;
         size_t process_actu;
         process_t **process;
@@ -46,6 +45,8 @@
         champion_t *champion;
         size_t champ_actu;
         size_t nbr_champ;
+        size_t nbr_of_live;
+        bool debug;
     }vm_t;
 
     typedef struct action_s {
@@ -91,6 +92,7 @@
     ssize_t manage_dump(char **argv, size_t index, vm_t *vm);
     ssize_t manage_n(char **argv, size_t index, vm_t *vm);
     ssize_t manage_a(char **argv, size_t index, vm_t *vm);
+    ssize_t manage_debug(UNUSED char **argv, UNUSED size_t index, vm_t *vm);
 
     //========> DISPLAY <=======//
     void display_help(void);

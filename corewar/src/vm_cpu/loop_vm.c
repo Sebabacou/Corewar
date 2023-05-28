@@ -38,17 +38,19 @@ static void is_alive(vm_t *vm)
 
 int loop_vm(vm_t *vm)
 {
-    display_buffer(vm);
+    if (vm->debug == true)
+        display_buffer(vm);
     while ((ssize_t)vm->actual_cycle != vm->cycle_max) {
-        printf("Cycle to win = %ld\n", vm->cycle_to_die);
+        if (vm->debug == true)
+            my_printf("Cycle to die = %ld\n", vm->cycle_to_die);
         for (vm->actual_cycle_for_die = 0; vm->actual_cycle_for_die <=
         vm->cycle_to_die && (ssize_t)vm->actual_cycle != vm->cycle_max;
-        vm->actual_cycle++, vm->actual_cycle_for_die++) {
+        vm->actual_cycle++, vm->actual_cycle_for_die++)
             check_champ(vm);
-        }
         is_alive(vm);
-        if (check_win(vm) == 1)
+        if (check_win(vm) == 1) {
             return 1;
+        }
     }
     return 0;
 }

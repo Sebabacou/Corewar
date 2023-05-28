@@ -30,9 +30,10 @@ static const action_t action[] = {
 int verif_fonct(vm_t *vm, size_t a)
 {
     if (action[a].name == vm->buffer[VM_PROCESS_ACTU->pos_y][VM_PROCESS_ACTU
-    ->pos_x])
+    ->pos_x]) {
         if (action[a].fonk != NULL)
             return action[a].fonk(vm);
+    }
     return -1;
 }
 
@@ -50,15 +51,9 @@ int check_in_tab(vm_t *vm)
 
 ssize_t launch_fct_vm(vm_t *vm)
 {
-    size_t test = 0;
-
     if (VM_PROCESS_ACTU->in_live == true && VM_PROCESS_ACTU->cycle_to_wait ==
     0) {
-        test = check_in_tab(vm);
-        if (test == 42)
-            VM_PROCESS_ACTU->carry = 1;
-        if (test == 84)
-            VM_PROCESS_ACTU->carry = 0;
+        check_in_tab(vm);
     }
     VM_PROCESS_ACTU->cycle_to_wait--;
     return 0;

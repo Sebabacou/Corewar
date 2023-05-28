@@ -24,6 +24,8 @@ int fct_add(vm_t *vm)
         return 84;
     VM_PROCESS_ACTU->reg[third_arg] = VM_PROCESS_ACTU->reg[first_arg] +
     VM_PROCESS_ACTU->reg[second_arg];
+    VM_PROCESS_ACTU->carry = VM_PROCESS_ACTU->reg[first_arg] +
+    VM_PROCESS_ACTU->reg[second_arg];
     move_process(vm, VM_PROCESS_ACTU->pc);
     return 42;
 }

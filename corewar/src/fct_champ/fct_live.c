@@ -16,10 +16,10 @@ int fct_live(vm_t *vm)
         return 1;
     }
     vm->champion[champ - 1].live = true;
-    vm->champion[champ - 1].nbr_of_live++;
-    if (vm->champion[champ - 1].nbr_of_live == 40) {
+    vm->nbr_of_live++;
+    if (vm->nbr_of_live == 40) {
         vm->cycle_to_die -= CYCLE_DELTA;
-        vm->champion[champ - 1].nbr_of_live = 0;
+        vm->nbr_of_live = 0;
     }
     my_printf("The player %ld(%s)is alive.\n", vm->champion[champ - 1].id,
     vm->champion[champ - 1].name);

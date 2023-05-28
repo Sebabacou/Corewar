@@ -14,6 +14,8 @@ static void init_simple_value(vm_t *vm)
     vm->actual_cycle_for_die = 0;
     vm->actual_cycle = 0;
     vm->champ_actu = 0;
+    vm->debug = false;
+    vm->nbr_of_live = 0;
 }
 
 static int init_malloc_value(vm_t *vm)
