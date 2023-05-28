@@ -1,13 +1,11 @@
 .name		"Le singe de guerre"
-.comment	"L'union des animaux, tout commença par une marmotte et un singe ..."
+.comment	"L'union des animaux"
 
 init:
 rest:
 fork %:go
 live %0
 fork %:go2
-live %0
-fork %:go3
 prelive:
 ld %251658255, r2
 ld %1, r12
@@ -23,10 +21,6 @@ sub r11, r12, r11
 zjmp %:forking
 ld %0, r16
 zjmp %:shield
-fork %:live
-
-live:
-live %0
 
 go:
 ld %0, r16
@@ -35,10 +29,6 @@ zjmp %:assaut1
 go2:
 ld %0, r16
 zjmp %:assaut2
-
-go3:
-ld %0, r16
-zjmp %:assaut3
 
 forking:
 ldi %:shield, %1, r13
@@ -139,14 +129,6 @@ ld %190055172, r6 #0x0B540304
 ld %507, r7
 ld %24, r4
 ld %0, r5
-live %0
-zjmp %:jump
-
-assaut3:
-live %0
-ld %190055949, r10 # sti r6, r7
-ld %84476409, r5
-fork %:second_assault
 live %0
 zjmp %:jump
 
